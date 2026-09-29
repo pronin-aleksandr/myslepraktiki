@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Мыслепрактики — BITOBE</title>
+<title>Мыслепрактикум — BITOBE</title>
 <meta name="description" content="Мыслепрактики BITOBE: регулярный менеджмент для крупных решений первого лица и топ-команды.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -794,6 +794,31 @@ a{color:inherit}
 .pd__eff{margin-top:var(--s3);background:var(--band);color:var(--band-fg);padding:18px 20px;font-weight:500;line-height:1.45}
 .pd__eff small{display:block;font-size:13px;font-weight:500;opacity:.7;margin-bottom:6px}
 @media (max-width:560px){.pd{width:100%;max-width:100%;margin:auto 0 0;max-height:88%}.pd__list > div{grid-template-columns:1fr}}
+
+/* процесс в первом экране */
+.proc{list-style:none;margin:var(--s8) 0 0;padding:0;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;counter-reset:none}
+.proc li{position:relative;background:var(--tint);padding:clamp(18px,2vw,26px) clamp(14px,1.4vw,20px) clamp(20px,2.2vw,28px);display:flex;flex-direction:column;gap:10px;min-height:150px;opacity:0;transform:translateY(12px);transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*90ms)}
+.js .proc li{opacity:0}
+html:not(.js) .proc li,.proc.in li{opacity:1;transform:none}
+.proc li:not(:last-child)::after{content:"";position:absolute;right:-6px;top:50%;width:10px;height:10px;background:var(--bg);clip-path:polygon(0 0,100% 50%,0 100%);z-index:1;transform:translate(3px,-50%)}
+.proc .num{font-size:clamp(34px,2vw + 12px,52px)}
+.proc b{font-weight:500;font-size:clamp(16px,.4vw + 13px,19px);line-height:1.3}
+.proc li{border-top:2px solid var(--accent)}
+.proc__key{margin-top:var(--s4);font-size:var(--fs-h3);line-height:1.4;font-weight:500;max-width:56ch}
+.proc__key a{color:inherit;text-decoration:underline;text-decoration-color:var(--copper);text-underline-offset:.2em}
+@media (max-width:1000px){.proc{grid-template-columns:repeat(3,minmax(0,1fr))}.proc li::after{display:none}}
+@media (max-width:560px){.proc{grid-template-columns:1fr 1fr}.proc li{min-height:0}}
+
+.foot__in{flex-wrap:wrap;gap:var(--s3) var(--s6)}
+.foot__contact{display:flex;align-items:center;flex-wrap:wrap;gap:var(--s2) var(--s6);margin-left:auto}
+.foot__who{display:flex;flex-direction:column;gap:2px;line-height:1.35}
+.foot__who b{font-weight:500}
+.foot__who span{font-size:14px;color:var(--muted)}
+.foot__links{display:flex;flex-direction:column;gap:2px;font-size:15px}
+.foot__links a{color:var(--fg);text-decoration:none}
+.foot__links a:hover{color:var(--accent-hover)}
+.foot__copy{flex-basis:100%}
+@media (max-width:700px){.foot__in{align-items:flex-start;text-align:left}.foot__in > .logo-link{align-self:flex-start}.foot__contact{margin-left:0;flex-direction:column;align-items:flex-start;text-align:left}.foot__copy{text-align:left}}
 </style>
 </head>
 <body>
@@ -812,33 +837,120 @@ a{color:inherit}
     </a>
     <nav class="hdr__nav" aria-label="Разделы">
       <a href="#cost">Цена решений</a>
-      <a href="#practices">Подход</a>
-      <a href="#library">Практики</a>
-      <a href="#modules">Модули</a>
-      <a href="mailto:a.pronin@bitobe.ru" class="button button--sm">Обсудить программу</a>
+      <a href="#library">Этапы и практики</a>
+      <a href="#modules">Мыслепрактикум</a>
+      <a href="#case">Пример</a>
     </nav>
   </div>
 </header>
 
 <main>
 
-<!-- 1. HERO: одна задача — два итога -->
+<!-- 1. HERO -->
 <section class="hero" id="top">
   <div class="container">
-    <p class="hero__cap">Мыслепрактики BITOBE — регулярный менеджмент для крупных решений</p>
+    <p class="hero__cap">Мыслепрактикум BITOBE — регулярный менеджмент для крупных решений</p>
     <div class="hero__grid">
-      <h1 class="h1">Итог крупного решения закладывается в его <em>начале</em></h1>
+      <h1 class="h1">Качество решения определяет <em>процесс</em></h1>
       <div class="hero__text">
-        <p class="body">Сделка, реорганизация, запуск нового направления. Опытная команда быстро видит ответ, план одобряют единогласно, прогноз выглядит убедительно.</p>
-        <p class="body">Через полтора года выясняется, что главный риск видели многие, но никто не назвал его вслух, а прогноз строился по собственному плану без сверки с похожими проектами.</p>
+        <p class="body">Принимать решения — основная работа руководителя, и слабое решение стоит дорого: сорванные сроки, пересмотренные бюджеты, упущенные возможности.</p>
+        <p class="body">Квалификация людей и глубина анализа важны. Сильнее всего на результат влияет то, как выстроен процесс решения и каким инструментом команда работает на каждом его этапе.</p>
+      </div>
+    </div>
+    <ol class="proc" data-anim aria-label="Шесть этапов решения">
+      <li style="--i:0"><span class="num">01</span><b>Понять ситуацию</b></li>
+      <li style="--i:1"><span class="num">02</span><b>Найти варианты</b></li>
+      <li style="--i:2"><span class="num">03</span><b>Выбрать решение</b></li>
+      <li style="--i:3"><span class="num">04</span><b>Проверить до запуска</b></li>
+      <li style="--i:4"><span class="num">05</span><b>Провести через организацию</b></li>
+      <li style="--i:5"><span class="num">06</span><b>Учиться на итогах</b></li>
+    </ol>
+    <p class="proc__key">На каждом этапе — своя <a href="#library">мыслепрактика</a>: короткая процедура, которая защищает решение от типичной ошибки этого этапа.</p>
+  </div>
+</section>
+
+<!-- 2. ЦЕНА РЕШЕНИЙ -->
+<section class="section section--band" id="cost">
+  <div class="container">
+    <div class="cost__head">
+      <div>
+        <p class="caption">Что показывают исследования управленческих решений</p>
+        <h2 class="h1">Слабые решения стоят <em>дорого</em></h2>
+      </div>
+      <p>Потери растворяются в сроках, бюджетах и упущенных возможностях. В отчётах видна цена ошибки, но не видна цена процесса, который к ней привёл.</p>
+    </div>
+    <div class="stats4">
+      <div><div class="stats__v">×6</div><div class="stats__l">процесс подготовки решения влияет на результат сильнее, чем объём анализа<span class="src">1 048 крупных решений, Lovallo, Sibony, McKinsey, 2010</span></div></div>
+      <div><div class="stats__v">+6,9</div><div class="stats__l">п.п. ROI при переходе из худшей четверти по качеству процесса в лучшую<span class="src">там же</span></div></div>
+      <div><div class="stats__v">52%</div><div class="stats__l">провалов при выборе «да / нет» против 32%, когда рассматривались несколько вариантов<span class="src">P. Nutt, исследования управленческих решений</span></div></div>
+      <div><div class="stats__v">20%</div><div class="stats__l">организаций, по оценке их руководителей, хорошо принимают решения<span class="src">McKinsey, 2019</span></div></div>
+    </div>
+    <p class="cost__out">Разрыв между компаниями объясняется тем, как устроена работа над решением. Квалификация руководителей здесь вторична. Этому можно научить и встроить в регламент правления.</p>
+  </div>
+</section>
+
+<!-- 5. БИБЛИОТЕКА -->
+<section class="section" id="library">
+  <div class="container">
+    <p class="caption">Этапы решения и мыслепрактики</p>
+    <h2 class="h1 tasks__h">На каждом этапе — свой <em>инструмент</em></h2>
+    <p class="day__hint">Нажмите на практику, чтобы увидеть, как она работает и что даёт</p>
+    <div class="tasks__grid" data-anim>
+      <div class="tasks__cols" aria-hidden="true"><span>Этап решения</span><span>Что на выходе</span><span>Мыслепрактики</span></div>
+      <div class="task" style="--i:0"><span class="task__type"><span class="num">01</span><span>Понять ситуацию до решения<span class="task__mod">Модуль 1</span></span></span><span class="task__do">Карта ситуации и ключевое ограничение системы</span><span class="task__tools"><button type="button" class="pchip" data-p="mindmap">Ментальная карта</button><button type="button" class="pchip" data-p="ishikawa">Диаграмма Исикавы</button><button type="button" class="pchip" data-p="toc">Теория ограничений</button><button type="button" class="pchip" data-p="loops">Системные петли</button></span></div>
+      <div class="task" style="--i:1"><span class="task__type"><span class="num">02</span><span>Найти варианты<span class="task__mod">Модуль 2</span></span></span><span class="task__do">3–4 варианта, включая вариант, снимающий противоречие</span><span class="task__tools"><button type="button" class="pchip" data-p="options">Поле вариантов</button><button type="button" class="pchip" data-p="triz">ТРИЗ: противоречие</button><button type="button" class="pchip" data-p="empathy">Карта эмпатии</button><button type="button" class="pchip" data-p="synectics">Синектика</button></span></div>
+      <div class="task" style="--i:2"><span class="task__type"><span class="num">03</span><span>Выбрать сильное решение<span class="task__mod">Модуль 3</span></span></span><span class="task__do">Прогноз с поправкой по аналогам и обоснованный выбор</span><span class="task__tools"><button type="button" class="pchip" data-p="outside">Взгляд извне</button><button type="button" class="pchip" data-p="independent">Независимые оценки</button><button type="button" class="pchip" data-p="scenarios">Сценарии</button><button type="button" class="pchip" data-p="tradeoff">Шкала компромиссов</button></span></div>
+      <div class="task" style="--i:3"><span class="task__type"><span class="num">04</span><span>Проверить до запуска<span class="task__mod">Модуль 3</span></span></span><span class="task__do">3–5 главных рисков с мерами, владельцами и ранними сигналами</span><span class="task__tools"><button type="button" class="pchip" data-p="premortem">Премортем</button><button type="button" class="pchip" data-p="response">Ответный ход</button><button type="button" class="pchip" data-p="second">Последствия второго порядка</button><button type="button" class="pchip" data-p="medals">Шесть медалей ценности</button><button type="button" class="pchip" data-p="ai">Проверка ответа ИИ</button></span></div>
+      <div class="task" style="--i:4"><span class="task__type"><span class="num">05</span><span>Провести решение и высвободить ресурсы<span class="task__mod">Модуль 4</span></span></span><span class="task__do">Лист для правления и реестр остановок в рублях и часах</span><span class="task__tools"><button type="button" class="pchip" data-p="onepage">Решение на одном листе</button><button type="button" class="pchip" data-p="stop">Что перестать делать</button><button type="button" class="pchip" data-p="killcrit">Критерии остановки</button></span></div>
+      <div class="task" style="--i:5"><span class="task__type"><span class="num">06</span><span>Учиться на решениях<span class="task__mod">Модуль 4</span></span></span><span class="task__do">Ожидания против факта и правила на будущее</span><span class="task__tools"><button type="button" class="pchip" data-p="aar">Разбор после действия</button><button type="button" class="pchip" data-p="journal">Журнал решений</button></span></div>
+    </div>
+    <p class="tasks__note">Когнитивные искажения и логические ловушки не выделены в отдельный блок: каждая практика компенсирует конкретную ошибку, и разбор ошибок идёт на материале решения участника.</p>
+  </div>
+</section>
+
+<!-- 4. ЧТО ТАКОЕ МЫСЛЕПРАКТИКА -->
+<section class="section section--subtle" id="practices">
+  <div class="container">
+
+    <div class="define">
+      <h2 class="h1">Мыслепрактика — <em>регулярный менеджмент</em> для мышления</h2>
+      <div>
+        <p class="define__def"><strong>Заданная последовательность из 3–7 шагов, через которую руководитель проводит своё реальное решение.</strong> Шаги заставляют увидеть варианты, сверить прогноз с фактами, назвать риски и остановить лишнее. На выходе — рабочий документ.</p>
+        <p class="body" style="margin-top:var(--s3)">Логика та же, что у практик регулярного менеджмента: то, что держалось на личном опыте и интуиции руководителя, превращается в процедуру, которую команда повторяет на каждом крупном решении. «Стратегическое мышление» за день не развить, а мыслепрактику можно освоить за один модуль и применить на ближайшем заседании правления.</p>
+        <ul class="attrs">
+          <li><span class="num">01</span><span>Осваивается на учебном кейсе, затем участник применяет её к своему предстоящему решению — индивидуально или в паре, без оценки коллег</span></li>
+          <li><span class="num">02</span><span>После мыслепрактикума команда применяет её сама, без ведущего</span></li>
+          <li><span class="num">03</span><span>Результат виден в документах и протоколах правления</span></li>
+        </ul>
       </div>
     </div>
 
+    <div class="acts" data-anim>
+      <div class="act" style="--i:0"><div class="act__verb">Увидеть</div><div class="act__line"><span class="act__dot"></span></div><p>Вынести ход собственного рассуждения наружу: элементы, связи, предположения, логику вывода.</p></div>
+      <div class="act" style="--i:1"><div class="act__verb">Проверить</div><div class="act__line"></div><p>Отделить факты от интерпретаций, сверить прогноз с похожими случаями, назвать риски.</p></div>
+      <div class="act" style="--i:2"><div class="act__verb">Пересобрать</div><div class="act__line"></div><p>Посмотреть на задачу из другой рамки и построить решение, которого не было в первом наборе вариантов.</p></div>
+      <div class="reflex" style="grid-column:1/-1">
+        <p class="reflex__label">Рефлексия<small>проходит через каждую практику</small></p>
+        <ul class="reflex__qs">
+          <li>Как я пришёл к этому выводу?</li>
+          <li>Что определило мой способ видеть задачу?</li>
+          <li>Что изменится, если подойти к ней иначе?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ПРИМЕР: одна задача — два итога -->
+<section class="section" id="case">
+  <div class="container">
+    <p class="caption">Пример</p>
+    <h2 class="h1 tasks__h">Одна задача — два <em>итога</em></h2>
+    <p class="body" style="max-width:60ch;margin-top:calc(-1 * var(--s3));margin-bottom:var(--s6)">Интеграция купленной компании. Та же команда, те же данные и тот же бюджет — разница только в том, как построена работа в начале.</p>
     <div class="paths" data-anim>
       <div class="paths__task">
         <span class="paths__taskbox">Интеграция купленной компании</span>
-        <span class="paths__meta">та же команда · те же данные · тот же бюджет</span>
-        <svg class="paths__split" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+                <svg class="paths__split" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
           <path d="M50 0 V16 M25 40 V16 H75 V40" vector-effect="non-scaling-stroke"/>
         </svg>
         <span class="paths__down" aria-hidden="true"></span>
@@ -903,245 +1015,6 @@ a{color:inherit}
   </div>
 </section>
 
-<!-- 2. ЦЕНА РЕШЕНИЙ -->
-<section class="section section--band" id="cost">
-  <div class="container">
-    <div class="cost__head">
-      <div>
-        <p class="caption">Что показывают исследования управленческих решений</p>
-        <h2 class="h1">Слабые решения стоят дороже, чем видно в <em>отчётах</em></h2>
-      </div>
-      <p>Потери растворяются в сроках, бюджетах и упущенных возможностях. В отчётах видна цена ошибки, но не видна цена процесса, который к ней привёл.</p>
-    </div>
-    <div class="stats4">
-      <div><div class="stats__v">×6</div><div class="stats__l">процесс подготовки решения влияет на результат сильнее, чем объём анализа<span class="src">1 048 крупных решений, Lovallo, Sibony, McKinsey, 2010</span></div></div>
-      <div><div class="stats__v">+6,9</div><div class="stats__l">п.п. ROI при переходе из худшей четверти по качеству процесса в лучшую<span class="src">там же</span></div></div>
-      <div><div class="stats__v">52%</div><div class="stats__l">провалов при выборе «да / нет» против 32%, когда рассматривались несколько вариантов<span class="src">P. Nutt, исследования управленческих решений</span></div></div>
-      <div><div class="stats__v">20%</div><div class="stats__l">организаций, по оценке их руководителей, хорошо принимают решения<span class="src">McKinsey, 2019</span></div></div>
-    </div>
-    <p class="cost__out">Разрыв между компаниями объясняется тем, как устроена работа над решением. Квалификация руководителей здесь вторична. Этому можно научить и встроить в регламент правления.</p>
-  </div>
-</section>
-
-<!-- 3. ПОЧЕМУ ОПЫТ НЕ ЗАЩИЩАЕТ -->
-<section class="section" id="why">
-  <div class="container">
-    <p class="caption">Почему опыт не защищает</p>
-    <div class="why" style="margin-bottom:0">
-      <h2 class="h1">Сильный опыт включается <em>автоматически</em></h2>
-      <div>
-        <p class="body">Опыт позволяет быстро распознавать знакомые ситуации и использовать проверенные способы решения. В крупной задаче он же подсказывает первую интерпретацию, знакомые варианты и уверенный прогноз. Руководитель работает с собранной им моделью ситуации и принимает её за саму ситуацию.</p>
-        <p class="body">Знать о типичных ошибках мышления недостаточно: люди хорошо замечают их у других и плохо у себя. Ошибки снижает процедура, встроенная в подготовку решения.</p>
-      </div>
-    </div>
-
-      </div>
-</section>
-
-<!-- 4. ЧТО ТАКОЕ МЫСЛЕПРАКТИКА -->
-<section class="section section--subtle" id="practices">
-  <div class="container">
-    <div class="bridge">
-      <ol class="flow" data-anim aria-label="Логика перехода к мыслепрактикам">
-        <li style="--i:0"><span>у руководителя сильные способы мышления</span></li>
-        <li style="--i:1"><span>в крупной задаче они включаются автоматически</span></li>
-        <li style="--i:2"><span>знание об ошибках от них не защищает</span></li>
-        <li style="--i:3"><span>нужна процедура в регулярной работе</span></li>
-        <li style="--i:4" class="is-key"><span>мыслепрактика</span></li>
-      </ol>
-    </div>
-
-    <div class="define">
-      <h2 class="h1">Мыслепрактика — <em>регулярный менеджмент</em> для мышления</h2>
-      <div>
-        <p class="define__def"><strong>Заданная последовательность из 3–7 шагов, через которую руководитель проводит своё реальное решение.</strong> Шаги заставляют увидеть варианты, сверить прогноз с фактами, назвать риски и остановить лишнее. На выходе — рабочий документ.</p>
-        <ul class="attrs">
-          <li><span class="num">01</span><span>Материал — собственное решение участника на ближайшие 3–6 месяцев</span></li>
-          <li><span class="num">02</span><span>Осваивается за один модуль, дальше применяется командой без ведущего</span></li>
-          <li><span class="num">03</span><span>Результат виден в документах и протоколах правления</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="acts" data-anim>
-      <div class="act" style="--i:0"><div class="act__verb">Увидеть</div><div class="act__line"><span class="act__dot"></span></div><p>Вынести ход собственного рассуждения наружу: элементы, связи, предположения, логику вывода.</p></div>
-      <div class="act" style="--i:1"><div class="act__verb">Проверить</div><div class="act__line"></div><p>Отделить факты от интерпретаций, сверить прогноз с похожими случаями, назвать риски.</p></div>
-      <div class="act" style="--i:2"><div class="act__verb">Пересобрать</div><div class="act__line"></div><p>Посмотреть на задачу из другой рамки и построить решение, которого не было в первом наборе вариантов.</p></div>
-      <div class="reflex" style="grid-column:1/-1">
-        <p class="reflex__label">Рефлексия<small>проходит через каждую практику</small></p>
-        <ul class="reflex__qs">
-          <li>Как я пришёл к этому выводу?</li>
-          <li>Что определило мой способ видеть задачу?</li>
-          <li>Что изменится, если подойти к ней иначе?</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="synth">
-      <div>
-        <h4>Что даёт процедура</h4>
-        <p>Решение, проверенное на варианты, прогноз и риски, и документ, который идёт на правление.</p>
-      </div>
-      <div>
-        <h4>Что остаётся после программы</h4>
-        <p>Руководитель сравнивает свой привычный ход с новым на одной и той же задаче и начинает замечать, каким способом думает, — и выбирать другой, когда этого требует ситуация.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5. БИБЛИОТЕКА -->
-<section class="section" id="library">
-  <div class="container">
-    <p class="caption">Библиотека практик</p>
-    <h2 class="h1 tasks__h">Шесть задач <em>первого лица</em></h2>
-    <p class="day__hint">Нажмите на практику, чтобы увидеть, как она работает и что даёт</p>
-    <div class="tasks__grid" data-anim>
-      <div class="tasks__cols" aria-hidden="true"><span>Задача руководителя</span><span>Что на выходе</span><span>Мыслепрактики</span></div>
-      <div class="task" style="--i:0"><span class="task__type"><span class="num">01</span><span>Понять ситуацию до решения<span class="task__mod">Модуль 1</span></span></span><span class="task__do">Карта ситуации и ключевое ограничение системы</span><span class="task__tools"><button type="button" class="pchip" data-p="mindmap">Ментальная карта</button><button type="button" class="pchip" data-p="ishikawa">Диаграмма Исикавы</button><button type="button" class="pchip" data-p="toc">Теория ограничений</button><button type="button" class="pchip" data-p="loops">Системные петли</button></span></div>
-      <div class="task" style="--i:1"><span class="task__type"><span class="num">02</span><span>Найти варианты<span class="task__mod">Модуль 2</span></span></span><span class="task__do">3–4 варианта, включая вариант, снимающий противоречие</span><span class="task__tools"><button type="button" class="pchip" data-p="options">Поле вариантов</button><button type="button" class="pchip" data-p="triz">ТРИЗ: противоречие</button><button type="button" class="pchip" data-p="empathy">Карта эмпатии</button><button type="button" class="pchip" data-p="synectics">Синектика</button></span></div>
-      <div class="task" style="--i:2"><span class="task__type"><span class="num">03</span><span>Выбрать сильное решение<span class="task__mod">Модуль 3</span></span></span><span class="task__do">Прогноз с поправкой по аналогам и обоснованный выбор</span><span class="task__tools"><button type="button" class="pchip" data-p="outside">Взгляд извне</button><button type="button" class="pchip" data-p="independent">Независимые оценки</button><button type="button" class="pchip" data-p="scenarios">Сценарии</button><button type="button" class="pchip" data-p="tradeoff">Шкала компромиссов</button></span></div>
-      <div class="task" style="--i:3"><span class="task__type"><span class="num">04</span><span>Проверить до запуска<span class="task__mod">Модуль 3</span></span></span><span class="task__do">3–5 главных рисков с мерами, владельцами и ранними сигналами</span><span class="task__tools"><button type="button" class="pchip" data-p="premortem">Премортем</button><button type="button" class="pchip" data-p="response">Ответный ход</button><button type="button" class="pchip" data-p="second">Последствия второго порядка</button><button type="button" class="pchip" data-p="medals">Шесть медалей ценности</button><button type="button" class="pchip" data-p="ai">Проверка ответа ИИ</button></span></div>
-      <div class="task" style="--i:4"><span class="task__type"><span class="num">05</span><span>Провести решение и высвободить ресурсы<span class="task__mod">Модуль 4</span></span></span><span class="task__do">Лист для правления и реестр остановок в рублях и часах</span><span class="task__tools"><button type="button" class="pchip" data-p="onepage">Решение на одном листе</button><button type="button" class="pchip" data-p="stop">Что перестать делать</button><button type="button" class="pchip" data-p="killcrit">Критерии остановки</button></span></div>
-      <div class="task" style="--i:5"><span class="task__type"><span class="num">06</span><span>Учиться на решениях<span class="task__mod">Модуль 4 и 90 дней</span></span></span><span class="task__do">Ожидания против факта и правила на будущее</span><span class="task__tools"><button type="button" class="pchip" data-p="aar">Разбор после действия</button><button type="button" class="pchip" data-p="journal">Журнал решений</button></span></div>
-    </div>
-    <p class="tasks__note">Когнитивные искажения и логические ловушки не выделены в отдельный блок: каждая практика компенсирует конкретную ошибку, и разбор ошибок идёт на материале решения участника.</p>
-  </div>
-</section>
-
-<!-- 6. МОДУЛИ -->
-<section class="section section--subtle" id="modules">
-  <div class="container">
-    <p class="caption">Программа</p>
-    <h2 class="h1 tasks__h">Четыре модуля — полный цикл <em>решения</em></h2>
-    <div class="mods">
-      <article class="mod">
-        <span class="num">01</span>
-        <span class="mod__meta">4 часа · задача 01</span>
-        <h3>Понять ситуацию</h3>
-        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="mindmap">Ментальная карта</button><button type="button" class="pchip pchip--mod" data-p="ishikawa">Диаграмма Исикавы</button><button type="button" class="pchip pchip--mod" data-p="toc">Теория ограничений</button></div>
-        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="loops">системные петли</button></p>
-        <div class="mod__art"><small>Документ на выходе</small><p>Карта ситуации с ключевым ограничением</p></div>
-      </article>
-      <article class="mod">
-        <span class="num">02</span>
-        <span class="mod__meta">4 часа · задача 02</span>
-        <h3>Найти варианты</h3>
-        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="options">Поле вариантов</button><button type="button" class="pchip pchip--mod" data-p="triz">ТРИЗ: работа с противоречием</button></div>
-        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="empathy">карта эмпатии</button>, <button type="button" class="plink" data-p="synectics">синектика</button></p>
-        <div class="mod__art"><small>Документ на выходе</small><p>Поле из 3–4 вариантов вместо «да / нет»</p></div>
-      </article>
-      <article class="mod">
-        <span class="num">03</span>
-        <span class="mod__meta">4 часа · задачи 03–04</span>
-        <h3>Выбрать и проверить</h3>
-        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="outside">Взгляд извне</button><button type="button" class="pchip pchip--mod" data-p="premortem">Премортем</button></div>
-        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="independent">независимые оценки</button>, <button type="button" class="plink" data-p="response">ответный ход</button>, <button type="button" class="plink" data-p="medals">шесть медалей ценности</button></p>
-        <div class="mod__art"><small>Документ на выходе</small><p>Прогноз по аналогам и реестр рисков с владельцами</p></div>
-      </article>
-      <article class="mod">
-        <span class="num">04</span>
-        <span class="mod__meta">4 часа · задачи 05–06</span>
-        <h3>Провести и остановить</h3>
-        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="onepage">Решение на одном листе</button><button type="button" class="pchip pchip--mod" data-p="stop">Что перестать делать</button></div>
-        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="killcrit">критерии остановки</button>, <button type="button" class="plink" data-p="aar">разбор после действия</button></p>
-        <div class="mod__art"><small>Документ на выходе</small><p>Лист для правления и реестр остановок</p></div>
-      </article>
-    </div>
-    <div class="mods__foot">
-      <div class="stats">
-        <div><div class="stats__v">4</div><div class="stats__l">модуля</div></div>
-        <div><div class="stats__v">16</div><div class="stats__l">часов</div></div>
-        <div><div class="stats__v">90</div><div class="stats__l">дней применения</div></div>
-      </div>
-      <p>Модули проводятся подряд за два дня или раздельно, по одному в неделю. Очно, группа 8–16 человек, два ведущих. Модули можно брать под свой тип задачи, но полный цикл даёт регламент решений целиком.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 7. КАК ПРОХОДИТ МОДУЛЬ -->
-<section class="section" id="day">
-  <div class="container">
-    <div class="day__top">
-      <p class="caption">Структура модуля на 4 часа</p>
-      <h2 class="h1">Одна задача — два способа — <em>сравнение</em></h2>
-      <p class="body" style="margin-top:var(--s3)">Участник проводит своё решение через две практики и видит, как смена способа работы меняет саму картину ситуации и доступные варианты.</p>
-    </div>
-    <ol class="flow flow--sm day__logic" data-anim aria-label="Логика модуля">
-      <li style="--i:0"><span>взять своё решение</span></li>
-      <li style="--i:1" class="is-mark"><span>разобрать привычным ходом</span></li>
-      <li style="--i:2"><span>заметить, как думал</span></li>
-      <li style="--i:3"><span>практика 1</span></li>
-      <li style="--i:4" class="is-mark"><span>пересобрать решение</span></li>
-      <li style="--i:5"><span>практика 2</span></li>
-      <li style="--i:6" class="is-mark"><span>пересобрать ещё раз</span></li>
-      <li style="--i:7"><span>сравнить способы</span></li>
-      <li style="--i:8" class="is-key"><span>документ для правления</span></li>
-    </ol>
-    <p class="day__hint">Выберите этап, чтобы увидеть, что на нём происходит</p>
-    <div class="tl" id="tl" role="tablist" aria-label="Этапы модуля"></div>
-    <div class="panel" id="panel" role="tabpanel" aria-live="polite">
-      <div class="panel__head">
-        <p class="panel__time" id="pTime"></p>
-        <h3 class="panel__title" id="pTitle"></h3>
-        <div class="panel__nav">
-          <button type="button" id="pPrev">Назад</button>
-          <button type="button" id="pNext">Далее</button>
-        </div>
-      </div>
-      <div class="panel__body" id="pBody"></div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. ПРИМЕРЫ -->
-<section class="section section--subtle" id="examples">
-  <div class="container">
-    <p class="caption">Как выглядит мыслепрактика</p>
-    <h2 class="h1 tasks__h">Две практики <em>изнутри</em></h2>
-    <div class="ex">
-      <div class="mp">
-        <span class="mp__tag">Модуль 3 · Проверить до запуска</span>
-        <h3>Премортем</h3>
-        <p>Перед запуском крупного проекта, реорганизации, интеграции после сделки — особенно когда команда единодушна и уверена в плане.</p>
-        <ol class="steps3">
-          <li><span class="num">01</span><b>Объявить провал</b><span>План описан в 3–5 строках. Ведущий объявляет: «Прошло полтора года. Проект провалился — громко».</span></li>
-          <li><span class="num">02</span><b>Назвать причины</b><span>Каждый 3–5 минут молча пишет причины, затем по кругу — по одной, без обсуждения. Усиление: «Как конкурент сорвал бы наш план?»</span></li>
-          <li><span class="num">03</span><b>Усилить план</b><span>3–5 главных причин. Для каждой — мера в плане, владелец и ранний сигнал.</span></li>
-        </ol>
-        <div class="fit">
-          <p class="fit__pain"><small>Когда особенно полезно</small>Когда все согласны и обсуждать вроде бы нечего</p>
-          <p class="fit__insight">«Риск, который я видел, но не называл, теперь записан в плане, и у него есть владелец».</p>
-        </div>
-        <p class="ev">Приём «представить, что исход уже случился» на 30% точнее выявляет причины будущего результата (Mitchell, Russo, Pennington, 1989; Klein, HBR, 2007).</p>
-      </div>
-
-      <div class="mp">
-        <span class="mp__tag">Модуль 2 · Найти варианты</span>
-        <h3>Работа с противоречием по ТРИЗ</h3>
-        <p>Когда важные требования конфликтуют и кажется, что остаётся только компромисс: скорость и качество, автономия и контроль, результат сегодня и развитие системы.</p>
-        <div class="contra">
-          <div class="contra__from"><small>было</small><s>«Выбираем А или Б»</s></div>
-          <span class="contra__arrow" aria-hidden="true"></span>
-          <div class="contra__to"><small>стало</small>«Какое требование усиливаем и что при этом ухудшается?»</div>
-        </div>
-        <div class="sub">
-          <h4>Идеальный конечный результат</h4>
-          <p>Как выглядел бы результат, если бы противоречие было снято? Описывается без привязки к привычному решению.</p>
-        </div>
-        <div class="sub">
-          <h4>Ресурсы, которые уже есть в системе</h4>
-          <div class="chip-row"><span class="chip">люди</span><span class="chip">процессы</span><span class="chip">информация</span><span class="chip">время</span><span class="chip">связи</span><span class="chip">последовательность действий</span></div>
-        </div>
-        <div class="fit">
-          <p class="fit__pain"><small>Когда особенно полезно</small>Когда выбор выглядит вынужденным</p>
-          <p class="fit__insight">«Ощущение вынужденного компромисса — повод изменить конструкцию задачи».</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- 9. ОСНОВА -->
 <section class="section" id="theory">
   <div class="container">
@@ -1186,6 +1059,11 @@ a{color:inherit}
       <path fill="#182D8D" d="M512.18,104.23h-78.03V1.18h76.56V17.96h-58.74v25.91h54.91v16.19h-54.91v27.38h60.21v16.78Z"/>
     </svg>
     </a>
+    <div class="foot__contact">
+      <div class="foot__who"><b>Александр Пронин</b><span>Лидер практики развития людей в организации BITOBE</span></div>
+      <div class="foot__links"><a href="mailto:a.pronin@bitobe.ru">a.pronin@bitobe.ru</a><a href="tel:+79216382217">+7 (921) 638-22-17</a></div>
+      <a class="button button--sm" href="mailto:a.pronin@bitobe.ru?subject=%D0%9C%D1%8B%D1%81%D0%BB%D0%B5%D0%BF%D1%80%D0%B0%D0%BA%D1%82%D0%B8%D0%BA%D1%83%D0%BC">Обсудить мыслепрактикум</a>
+    </div>
     <p class="foot__copy">© BITOBE, 2026 · ООО «Бизнес для Бизнеса»</p>
   </div>
 </footer>
@@ -1221,7 +1099,7 @@ a{color:inherit}
   }
 
   // Временная линия практикума
-  var S = [{"t": "0:00", "m": 15, "n": "Своё решение", "p": ["Каждый участник формулирует решение, над которым работает сейчас: что решается, к какому сроку, кто принимает решение.", "Задача фиксируется так, чтобы её можно было вынести на правление."]}, {"t": "0:15", "m": 20, "n": "Привычный ход", "p": ["Участник готовит решение так, как сделал бы это на работе, без подсказок и инструментов.", "Результат записывается: <b>к нему вернутся в конце модуля</b>."]}, {"t": "0:35", "m": 15, "n": "Разбор мышления", "p": ["Группа обсуждает не само решение, а <b>то, как оно появилось</b>:"], "q": ["Что мы посчитали очевидным?", "Какие предположения повлияли на вывод?", "Почему участники увидели похожие ситуации по-разному?"], "a": "Задача — сделать различия в мышлении видимыми до знакомства с инструментом."}, {"t": "0:50", "m": 30, "n": "Практика 1", "mp": 1, "p": ["Короткое введение: шаги практики и то, какую ошибку она компенсирует.", "Демонстрация на решении одного из участников."]}, {"t": "1:20", "m": 35, "n": "Своё решение через практику 1", "p": ["Участники проводят своё решение через шаги практики: индивидуально, затем в парах.", "В обсуждении объясняют не только <b>что решили</b>, но и:"], "q": ["что заметили;", "что изменилось по сравнению с первым вариантом."]}, {"t": "", "m": 15, "n": "Перерыв", "br": 1, "p": ["Пауза между блоками модуля."]}, {"t": "2:10", "m": 30, "n": "Практика 2", "mp": 1, "p": ["Второй способ работы вводится через ограничение первого решения или новый поворот той же задачи."]}, {"t": "2:40", "m": 35, "n": "Своё решение через практику 2", "p": ["Участники снова пересобирают решение, теперь вторым способом.", "Предмет обсуждения:"], "q": ["как изменился способ видеть задачу;", "какие варианты и риски появились;", "что стало важным после второй практики."]}, {"t": "3:15", "m": 25, "n": "Сравнение способов", "p": ["Участник кладёт рядом три версии решения: привычную и две новые.", "Сравниваются не только результаты, но и <b>логика рассуждения</b>:"], "q": ["Что осталось прежним?", "За счёт какого хода появилось другое решение?", "Для каких задач полезен каждый способ?"]}, {"t": "3:40", "m": 20, "n": "Документ и перенос", "p": ["Участник оформляет документ модуля по своей задаче и назначает дату, когда применит практику на ближайшем заседании."], "q": ["Какой способ я включил автоматически?", "По каким признакам я пойму, что нужен другой?"]}];
+  var S = [{"t": "0:00", "m": 15, "n": "Учебный кейс", "p": ["Группа получает управленческую ситуацию: что решается, какие данные есть, какие ограничения.", "Кейс нужен, чтобы освоить практику без риска для собственных решений."]}, {"t": "0:15", "m": 20, "n": "Привычный ход", "p": ["Участники решают кейс так, как сделали бы это на работе, без подсказок и инструментов.", "Результат записывается: <b>к нему вернутся в конце модуля</b>."]}, {"t": "0:35", "m": 15, "n": "Разбор мышления", "p": ["Группа обсуждает не решение, а <b>то, как оно появилось</b>:"], "q": ["Что мы посчитали очевидным?", "Какие предположения повлияли на вывод?", "Почему участники увидели ситуацию по-разному?"]}, {"t": "0:50", "m": 30, "n": "Практика 1 на кейсе", "p": ["Ведущий проводит группу по шагам практики на том же кейсе.", "Участники видят, какую ошибку практика компенсирует и что меняется в решении."]}, {"t": "1:20", "m": 35, "n": "Практика 1 на своём решении", "p": ["Каждый применяет практику к своему <b>предстоящему</b> решению — индивидуально или в паре.", "В группу выносится только ход работы:"], "q": ["что удалось заметить;", "в каком месте практика дала другой результат."]}, {"t": "", "m": 15, "n": "Перерыв", "br": 1, "p": ["Пауза между блоками модуля."]}, {"t": "2:10", "m": 30, "n": "Практика 2 на кейсе", "p": ["Второй способ работы вводится через ограничение первого решения или новый поворот того же кейса."]}, {"t": "2:40", "m": 35, "n": "Практика 2 на своём решении", "p": ["Участник пересобирает своё решение вторым способом."], "q": ["как изменилась картина ситуации;", "какие варианты и риски появились."]}, {"t": "3:15", "m": 25, "n": "Сравнение способов", "p": ["Рядом кладутся привычное решение кейса и решения, полученные через практики.", "Сравнивается <b>логика рассуждения</b>:"], "q": ["За счёт какого хода появилось другое решение?", "Для каких задач полезен каждый способ?"]}, {"t": "3:40", "m": 20, "n": "Документ и перенос", "p": ["Участник оформляет документ модуля по своему решению и намечает, на каком заседании применит практику."], "q": ["Какой способ я включаю автоматически?", "По каким признакам пойму, что нужен другой?"]}];
   var tl = document.getElementById('tl'), panel = document.getElementById('panel');
   var pTime = document.getElementById('pTime'), pTitle = document.getElementById('pTitle'), pBody = document.getElementById('pBody');
   var prev = document.getElementById('pPrev'), next = document.getElementById('pNext');
