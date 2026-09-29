@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Мыслепрактики — BITOBE</title>
+<meta name="description" content="Мыслепрактики BITOBE: регулярный менеджмент для крупных решений первого лица и топ-команды.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;700&family=PT+Serif:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#FFFFFF; --fg:#000000; --muted:#4D5156; --caption:#7A899A;
+  --subtle:#F5F5F5; --tint:#ECEEF6; --tint-2:#DDE1F0; --card:#FFFFFF;
+  --accent:#19194C; --accent-fg:#FFFFFF; --accent-hover:#182D8D;
+  --band:#19194C; --band-fg:#FFFFFF; --band-muted:#C8C8C8; --band-line:rgba(255,255,255,.22);
+  --copper:#BE9176; --line:#C8C8C8; --logo:#182D8D;
+  --field-a:#ECECEF; --field-b:#E3E7F4;
+  --sans:'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --serif:'PT Serif', Georgia, 'Times New Roman', serif;
+  --fs-display:clamp(36px, 7vw + 8px, 120px);
+  --fs-h1:clamp(32px, 3.6vw + 14px, 72px);
+  --fs-h2:clamp(26px, 2vw + 14px, 44px);
+  --fs-h3:clamp(19px, .8vw + 14px, 24px);
+  --fs-lead:clamp(18px, .7vw + 14px, 23px);
+  --s1:8px; --s2:16px; --s3:24px; --s4:clamp(20px,3vw,32px); --s6:clamp(32px,5vw,48px);
+  --s8:clamp(40px,6vw,64px); --s12:clamp(64px,9vw,120px);
+  --max:1280px;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#10102A; --fg:#F3F3F6; --muted:#BAC0CB; --caption:#8F9BAD;
+    --subtle:#16163A; --tint:#1F1F50; --tint-2:#2A2A63; --card:#1A1A42;
+    --accent:#FFFFFF; --accent-fg:#19194C; --accent-hover:#DDE1F0;
+    --band:#1E1E5C; --band-line:rgba(255,255,255,.2);
+    --line:rgba(255,255,255,.18); --logo:#FFFFFF;
+    --field-a:#1C1C44; --field-b:#25255F;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#10102A; --fg:#F3F3F6; --muted:#BAC0CB; --caption:#8F9BAD;
+  --subtle:#16163A; --tint:#1F1F50; --tint-2:#2A2A63; --card:#1A1A42;
+  --accent:#FFFFFF; --accent-fg:#19194C; --accent-hover:#DDE1F0;
+  --band:#1E1E5C; --band-line:rgba(255,255,255,.2);
+  --line:rgba(255,255,255,.18); --logo:#FFFFFF;
+  --field-a:#1C1C44; --field-b:#25255F;
+}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box;box-shadow:none!important;text-shadow:none!important}
+html,body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block;background:#19194C}
+p{margin:0}
+h1,h2,h3,h4{font-family:var(--sans);font-weight:500;margin:0;line-height:1.08;overflow-wrap:break-word;hyphens:manual}
+h1 em,h2 em,h3 em,.display em{font-family:var(--serif);font-style:italic;font-weight:400}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.container{max-width:var(--max);margin:0 auto;padding-left:clamp(20px,4vw,40px);padding-right:clamp(20px,4vw,40px)}
+.section{padding:var(--s12) 0}
+.section--subtle{background:var(--subtle)}
+.section--band{background:var(--band);color:var(--band-fg)}
+.caption{font-size:15px;font-weight:500;color:var(--caption);letter-spacing:.01em;margin-bottom:var(--s3)}
+.section--band .caption{color:var(--band-muted)}
+.h1{font-size:var(--fs-h1);letter-spacing:-.022em}
+.h2{font-size:var(--fs-h2);letter-spacing:-.015em;line-height:1.12}
+.h3{font-size:var(--fs-h3);letter-spacing:-.01em;line-height:1.25}
+.display{font-size:var(--fs-display);letter-spacing:-.03em;line-height:.95;font-weight:500}
+.lead{font-size:var(--fs-lead);line-height:1.5}
+.body{max-width:62ch;color:var(--muted)}
+.body + .body{margin-top:var(--s2)}
+.num{font-family:var(--serif);font-style:italic;color:var(--copper);line-height:1}
+.button{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:14px 28px;font:500 16px/1 var(--sans);color:var(--accent-fg);background:var(--accent);border:0;border-radius:9999px;cursor:pointer;text-decoration:none;transition:background-color .2s ease}
+.button:hover{background:var(--accent-hover)}
+.button--light{background:#FFFFFF;color:#19194C}
+.button--light:hover{background:#DDE1F0}
+.button--sm{min-height:40px;padding:10px 20px;font-size:15px}
+
+/* ---------- Header ---------- */
+.hdr{position:sticky;top:0;z-index:50;background:var(--bg);padding-top:env(safe-area-inset-top,0px);margin-top:calc(-1 * env(safe-area-inset-top,0px))}
+.hdr__in{display:flex;align-items:center;justify-content:space-between;gap:var(--s3);height:72px}
+.logo-link{display:inline-block;line-height:0}
+.logo{height:24px;width:auto;display:block}
+.logo path{fill:var(--logo)}
+.hdr__nav{display:flex;align-items:center;gap:clamp(16px,2.4vw,32px);font-size:15px}
+.hdr__nav a:not(.button){text-decoration:none;color:var(--fg);transition:color .2s}
+.hdr__nav a:not(.button):hover{color:var(--copper)}
+@media (max-width:900px){.hdr__nav a:not(.button){display:none}}
+@media (max-width:640px){.logo{height:20px}.hdr__in{height:64px}}
+
+/* ---------- Hero / problem ---------- */
+.hero{padding:clamp(40px,7vw,104px) 0 var(--s12)}
+.hero__grid{display:grid;grid-template-columns:7fr 5fr;gap:var(--s8);align-items:end}
+.hero h1{max-width:14ch}
+.hero__text .body{font-size:18px}
+.hero__key{margin-top:var(--s12);display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s3);max-width:980px}
+.hero__key p{font-size:var(--fs-h2);line-height:1.2;letter-spacing:-.015em;font-weight:500}
+.hero__key p em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--copper)}
+@media (max-width:900px){.hero__grid{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* ---------- Trajectories ---------- */
+.paths{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(24px,5vw,80px);row-gap:0;margin-top:var(--s8)}
+.path__head{display:flex;flex-direction:column;gap:4px;margin-bottom:var(--s3)}
+.path__note{font-size:15px;color:var(--caption)}
+.path__field{position:relative;padding:22px 0}
+.path__shape{position:absolute;inset:0;background:var(--field-a);transition:clip-path 1.3s cubic-bezier(.6,.05,.25,1)}
+.path--narrow .path__shape{clip-path:polygon(0 0,100% 0,67% 100%,33% 100%)}
+.path--wide .path__shape{background:var(--field-b);clip-path:polygon(33% 0,67% 0,100% 100%,0 100%)}
+.path__steps{position:relative;list-style:none;margin:0;padding:0;display:flex;flex-direction:column;align-items:center;gap:14px}
+.path__steps li{width:var(--w);min-width:min(168px,94%);max-width:96%;background:var(--card);padding:12px 14px;text-align:center;font-size:15px;line-height:1.3;font-weight:500;transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i) * 130ms + 350ms)}
+.path__steps li.is-end{background:var(--accent);color:var(--accent-fg)}
+.path--narrow .path__steps li.is-end{background:var(--caption);color:#fff}
+.path__arrow{display:block;width:1px;height:10px;background:var(--line);margin:-10px auto -8px;position:relative}
+.path__tail{display:flex;justify-content:center;margin-top:var(--s3)}
+.path__tail svg{width:100%;max-width:340px;height:auto}
+.path__tail .t-line{stroke:var(--caption);stroke-width:1.5;fill:none}
+.path__tail .t-frame{stroke:var(--caption);stroke-width:1.5;fill:none;stroke-dasharray:5 5}
+.path__tail .t-dot{fill:var(--caption)}
+.path__tail .t-dot--main{fill:var(--accent)}
+.path__tail .t-branch{stroke:var(--accent);stroke-width:1.5;fill:none}
+.paths__outro{margin-top:var(--s8);max-width:860px;font-size:var(--fs-h3);line-height:1.4;font-weight:500}
+.js .paths[data-anim]:not(.in) .path__shape{clip-path:polygon(49.5% 0,50.5% 0,50.5% 100%,49.5% 100%)}
+.js .paths[data-anim]:not(.in) .path__steps li{opacity:0;transform:translateY(8px)}
+.js .paths[data-anim] .path--wide .path__steps li{transition-delay:calc(var(--i) * 130ms + 1000ms)}
+.js .paths[data-anim] .path--wide .path__shape{transition-delay:.55s}
+.path__tail svg{transition:opacity .6s ease 1.9s}
+.js .paths[data-anim]:not(.in) .path__tail svg{opacity:0}
+@media (max-width:760px){.paths{grid-template-columns:1fr}.js .paths[data-anim] .path--wide .path__steps li{transition-delay:calc(var(--i) * 130ms + 350ms)}.js .paths[data-anim] .path--wide .path__shape{transition-delay:0s}}
+
+
+.paths__task{grid-column:1/-1;display:flex;flex-direction:column;align-items:center}
+.paths__taskbox{background:var(--accent);color:var(--accent-fg);font-weight:500;font-size:var(--fs-h3);padding:16px 32px;text-align:center}
+.paths__split{display:block;width:100%;height:44px}
+.paths__split path{stroke:var(--caption);stroke-width:1.5;fill:none}
+.paths__down{display:none;width:1px;height:28px;background:var(--caption)}
+.path__head{text-align:center;align-items:center}
+.path__end{display:flex;flex-direction:column;align-items:center}
+.path__end svg{width:100%;max-width:340px;height:auto;display:block}
+.path__end .t-line{stroke:var(--caption);stroke-width:1.5;fill:none}
+.path__end .t-branch{stroke:var(--accent);stroke-width:1.5;fill:none}
+.path__end .t-dot{fill:var(--caption)}
+.path__end .t-dot--main{fill:var(--accent)}
+.path__frame{border:1.5px dashed var(--caption);padding:10px}
+.path__result{display:block;background:var(--caption);color:#fff;padding:12px 18px;font-size:15px;font-weight:500;text-align:center;line-height:1.3;max-width:240px}
+.path__result--main{background:var(--accent);color:var(--accent-fg);max-width:320px;margin-top:10px}
+.path__end{transition:opacity .6s ease 1.9s}
+.js .paths[data-anim]:not(.in) .path__end{opacity:0}
+@media (max-width:760px){
+  .paths__split{display:none}
+  .paths__down{display:block}
+  .paths{row-gap:var(--s4)}
+}
+/* ---------- Program answer (band) ---------- */
+.answer__grid{display:grid;grid-template-columns:1fr;gap:var(--s8)}
+.answer .display{color:#fff}
+.answer__intro{font-size:var(--fs-lead);color:var(--band-muted);max-width:40ch}
+.triad{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:0;counter-reset:t}
+.triad li{position:relative;padding:var(--s3) var(--s4) var(--s3) 0;border-top:1px solid var(--band-line);font-size:var(--fs-h3);line-height:1.3;font-weight:500}
+.triad li .num{display:block;font-size:clamp(34px,3vw,48px);margin-bottom:var(--s2)}
+.triad li:not(:last-child)::after{content:"";position:absolute;top:-6px;right:14px;width:11px;height:11px;border-top:1px solid var(--band-line);border-right:1px solid var(--band-line);transform:rotate(45deg)}
+.stats{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:var(--s3) clamp(32px,6vw,96px)}
+.stats__v{font-family:var(--serif);font-style:italic;color:var(--copper);font-size:clamp(56px,5vw + 16px,112px);line-height:.9}
+.stats__l{margin-top:var(--s1);font-size:16px;color:inherit;opacity:.8}
+@media (max-width:760px){.triad{grid-template-columns:1fr}.triad li:not(:last-child)::after{display:none}.stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s2)}.stats__l{font-size:14px;line-height:1.3}}
+
+/* ---------- Flow chains ---------- */
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;align-items:stretch;gap:10px 0}
+.flow li{display:flex;align-items:center;font-size:15px;line-height:1.3;font-weight:500}
+.flow li span{display:block;padding:11px 16px;background:var(--tint)}
+.flow li:not(:last-child)::after{content:"";flex:0 0 auto;width:22px;height:1px;background:var(--caption);margin:0 4px 0 4px;position:relative}
+.flow li.is-key span{background:var(--accent);color:var(--accent-fg)}
+.flow li.is-mark span{background:var(--card);outline:1px solid var(--accent);outline-offset:-1px}
+.flow--lg li{font-size:clamp(17px,1vw + 12px,22px)}
+.flow--lg li span{padding:16px 22px}
+.flow--band li span{background:rgba(255,255,255,.08)}
+.section--subtle .flow li span{background:var(--card)}
+.section--subtle .flow li.is-key span{background:var(--accent)}
+.js .flow[data-anim] li{transition:opacity .45s ease,transform .45s ease;transition-delay:calc(var(--i,0) * 110ms)}
+.js .flow[data-anim]:not(.in) li{opacity:0;transform:translateX(-6px)}
+@media (max-width:640px){
+  .flow{flex-direction:column;align-items:flex-start;gap:0}
+  .flow li{flex-direction:column;align-items:flex-start}
+  .flow li:not(:last-child)::after{width:1px;height:14px;margin:0 0 0 22px}
+}
+
+/* ---------- Practices definition ---------- */
+.bridge{margin-bottom:var(--s12)}
+.define{display:grid;grid-template-columns:6fr 5fr;gap:var(--s8);align-items:start}
+.define__def{font-size:var(--fs-lead);line-height:1.5}
+.define__def strong{font-weight:500}
+.acts{margin-top:var(--s12);display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.act{position:relative;padding:var(--s4) var(--s4) var(--s6) 0}
+.act__verb{font-size:clamp(30px,2.4vw + 14px,56px);font-weight:500;letter-spacing:-.025em;line-height:1;margin-bottom:var(--s3)}
+.act__line{position:relative;height:1px;background:var(--fg);margin-bottom:var(--s3)}
+.act:not(:last-child) .act__line::after{content:"";position:absolute;right:0;top:-5px;width:10px;height:10px;border-top:1px solid var(--fg);border-right:1px solid var(--fg);transform:rotate(45deg)}
+.act__dot{position:absolute;left:0;top:-6px;width:13px;height:13px;border-radius:50%;background:var(--accent)}
+.act p{color:var(--muted);max-width:32ch}
+.reflex{background:var(--band);color:var(--band-fg);padding:var(--s4) var(--s4);display:grid;grid-template-columns:auto 1fr;gap:var(--s3) var(--s6);align-items:start}
+.reflex__label{font-weight:500;font-size:var(--fs-h3);white-space:nowrap}
+.reflex__label small{display:block;font-size:14px;font-weight:400;color:var(--band-muted);margin-top:4px;white-space:normal;max-width:24ch}
+.reflex__qs{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s3)}
+.reflex__qs li{font-family:var(--serif);font-style:italic;font-size:clamp(18px,.8vw + 13px,22px);line-height:1.35}
+.js .acts[data-anim] .act{transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i) * 160ms)}
+.js .acts[data-anim]:not(.in) .act{opacity:0;transform:translateY(10px)}
+.js .acts[data-anim] .reflex{transition:opacity .6s ease .55s,clip-path .9s cubic-bezier(.6,.05,.25,1) .5s;clip-path:inset(0 0 0 0)}
+.js .acts[data-anim]:not(.in) .reflex{opacity:0;clip-path:inset(0 100% 0 0)}
+@media (max-width:900px){
+  .define{grid-template-columns:1fr;gap:var(--s4)}
+  .acts{grid-template-columns:1fr}
+  .act{padding:0 0 var(--s4) var(--s4);border-left:1px solid var(--fg)}
+  .act__line{display:none}
+  .act__dot{left:-7px;top:6px}
+  .reflex{grid-template-columns:1fr}
+  .reflex__qs{grid-template-columns:1fr;gap:var(--s2)}
+}
+
+/* ---------- Theory cards ---------- */
+.theory__head{max-width:900px;margin-bottom:var(--s8)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,20px)}
+.card{background:var(--card);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:var(--s2)}
+.card__who{font-size:15px;color:var(--caption);font-weight:500}
+.card h3{margin-bottom:var(--s1)}
+.card p{color:var(--muted)}
+.card__key{margin-top:auto;padding-top:var(--s3);font-weight:500;color:var(--fg);line-height:1.45}
+.card__chain{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-direction:column;gap:0}
+.card__chain li{padding:12px 16px;background:var(--tint);font-weight:500;line-height:1.35}
+.card__chain li:nth-child(2){background:var(--tint-2);margin-left:clamp(12px,2vw,28px)}
+.card__chain li:nth-child(3){background:var(--accent);color:var(--accent-fg);margin-left:clamp(24px,4vw,56px)}
+.card__qs{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-direction:column;gap:8px}
+.card__qs li{font-family:var(--serif);font-style:italic;font-size:19px;line-height:1.35;color:var(--fg)}
+@media (max-width:900px){.cards{grid-template-columns:1fr}}
+
+/* ---------- Learning ---------- */
+.learn__top{display:grid;grid-template-columns:6fr 5fr;gap:var(--s8);align-items:center;margin-bottom:var(--s12)}
+.plate{width:100%;height:clamp(260px,40vw,520px);object-fit:cover}
+.layers{display:flex;flex-direction:column;gap:6px}
+.layer{display:grid;grid-template-columns:90px 1.1fr 1.4fr;gap:var(--s4);align-items:start;padding:clamp(22px,2.6vw,36px) clamp(20px,2.6vw,36px);background:var(--tint)}
+.layer:nth-child(2){background:var(--tint-2)}
+.layer:nth-child(3){background:var(--accent);color:var(--accent-fg)}
+.layer:nth-child(3) .layer__sys,.layer:nth-child(3) p{color:var(--accent-fg);opacity:.85}
+.layer .num{font-size:clamp(40px,3vw + 10px,64px)}
+.layer__sys{font-size:15px;color:var(--muted);margin-bottom:6px;font-weight:500}
+.layer__q{font-size:var(--fs-h3);font-weight:500;line-height:1.25}
+.layer p{color:var(--muted)}
+.learn__flow{margin-top:var(--s8)}
+.learn__flow h3{margin-bottom:var(--s4)}
+.js .layers[data-anim] .layer{transition:opacity .55s ease,transform .55s ease;transition-delay:calc(var(--i) * 170ms)}
+.js .layers[data-anim]:not(.in) .layer{opacity:0;transform:translateY(12px)}
+@media (max-width:900px){
+  .learn__top{grid-template-columns:1fr;gap:var(--s4)}
+  .layer{grid-template-columns:1fr;gap:var(--s1)}
+}
+
+/* ---------- Practicums overview ---------- */
+.overview__head{display:flex;justify-content:space-between;align-items:end;gap:var(--s4);flex-wrap:wrap;margin-bottom:var(--s8)}
+.trio{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(12px,1.6vw,20px);position:relative}
+.trio li{position:relative}
+.trio a{display:flex;flex-direction:column;gap:var(--s2);height:100%;padding:clamp(24px,3vw,40px);background:var(--card);text-decoration:none;color:inherit;transition:background-color .2s}
+.trio a:hover{background:var(--tint)}
+.trio .num{font-size:clamp(64px,5vw + 20px,120px);margin-bottom:var(--s2)}
+.trio h3{font-size:clamp(22px,1.2vw + 14px,30px)}
+.trio p{color:var(--muted)}
+.trio__meta{margin-top:auto;padding-top:var(--s3);display:flex;justify-content:space-between;gap:var(--s2);font-size:15px;font-weight:500}
+.trio__meta span:last-child{text-decoration:underline;text-underline-offset:.2em}
+.trio li:not(:last-child)::after{content:"";position:absolute;z-index:2;top:50%;right:calc(-1 * clamp(12px,1.6vw,20px) / 2 - 14px);width:28px;height:28px;margin-top:-14px;background:var(--accent);border-radius:50%}
+.trio li:not(:last-child)::before{content:"";position:absolute;z-index:3;top:50%;right:calc(-1 * clamp(12px,1.6vw,20px) / 2 - 2px);width:7px;height:7px;margin-top:-4px;border-top:1.6px solid var(--accent-fg);border-right:1.6px solid var(--accent-fg);transform:rotate(45deg)}
+@media (max-width:900px){.trio{grid-template-columns:1fr}.trio li:not(:last-child)::after{top:auto;margin-top:0;bottom:calc(-1 * clamp(12px,1.6vw,20px) / 2 - 14px);right:auto;left:clamp(24px,3vw,40px)}.trio li:not(:last-child)::before{top:auto;margin-top:0;bottom:calc(-1 * clamp(12px,1.6vw,20px) / 2 - 1px);right:auto;left:calc(clamp(24px,3vw,40px) + 10px);transform:rotate(135deg)}}
+
+/* ---------- Practicum detail ---------- */
+.pr{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,7fr);gap:clamp(32px,6vw,96px);align-items:start}
+.pr__aside{position:sticky;top:calc(env(safe-area-inset-top,0px) + 96px)}
+.pr__aside .num{font-size:clamp(72px,6vw + 20px,140px);display:block;margin-bottom:var(--s3)}
+.pr__step{font-size:15px;color:var(--caption);font-weight:500;margin-bottom:var(--s2);display:flex;align-items:center;gap:12px}
+.pr__dots{display:inline-flex;gap:6px}
+.pr__dots i{width:26px;height:4px;background:var(--line);display:block}
+.pr__dots i.on{background:var(--accent)}
+.pr__aside h2{margin-bottom:var(--s3)}
+.pr__hours{display:inline-block;font-weight:500;padding:6px 14px;background:var(--tint);margin-bottom:var(--s4)}
+.pr__task h4{font-size:15px;color:var(--caption);font-weight:500;margin-bottom:6px}
+.pr__task p{font-size:17px;line-height:1.55}
+.pr__main{display:flex;flex-direction:column;gap:clamp(14px,1.6vw,20px)}
+.mp{background:var(--subtle);padding:clamp(24px,3vw,44px)}
+.section--subtle .mp{background:var(--card)}
+.mp__tag{display:inline-flex;align-items:center;gap:10px;font-size:15px;font-weight:500;color:var(--fg);margin-bottom:var(--s2)}
+.mp__tag::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--accent)}
+.mp h3{font-size:clamp(22px,1.2vw + 14px,32px);margin-bottom:var(--s3);letter-spacing:-.015em}
+.mp > p{color:var(--muted);max-width:60ch}
+.mp > p + p{margin-top:var(--s2)}
+.mp__visual{margin-top:var(--s4)}
+.mp__q{margin-top:var(--s4);font-family:var(--serif);font-style:italic;font-size:clamp(20px,1vw + 14px,26px);line-height:1.35}
+.mp__q small{display:block;font-family:var(--sans);font-style:normal;font-size:15px;color:var(--caption);margin-bottom:6px;font-weight:500}
+.sub{margin-top:var(--s4);padding-top:var(--s4);border-top:1px solid var(--line)}
+.sub h4{font-size:19px;font-weight:500;margin-bottom:var(--s1)}
+.sub p{color:var(--muted);max-width:60ch}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s2)}
+.chip{padding:8px 14px;background:var(--tint);font-size:15px;font-weight:500}
+.chain-block{padding:clamp(20px,2.4vw,32px) 0 var(--s1)}
+.chain-block h4,.extra h4{font-size:15px;color:var(--caption);font-weight:500;margin-bottom:var(--s2)}
+.extra h4{display:flex;align-items:center;gap:10px}
+.extra h4::before{content:"";width:8px;height:8px;border-radius:50%;border:1.5px solid var(--caption)}
+.extra{padding:clamp(8px,1.4vw,16px) 0}
+.extra ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.extra li{font-size:15px;padding:7px 14px;background:var(--subtle);color:var(--muted)}
+.section--subtle .extra li{background:var(--tint)}
+.outcome{background:var(--band);color:var(--band-fg);padding:clamp(24px,3vw,44px)}
+.outcome h4{font-size:15px;font-weight:500;color:var(--band-muted);margin-bottom:var(--s2)}
+.outcome p{font-size:var(--fs-h3);line-height:1.4;font-weight:500}
+@media (max-width:980px){.pr{grid-template-columns:minmax(0,1fr);gap:var(--s6)}.pr__aside{position:static}}
+
+/* mind map */
+.mindmap{width:100%;height:auto;display:block}
+.mm-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+@media (max-width:560px){.mindmap{min-width:500px}}
+.mindmap .mm-l{stroke:var(--fg);stroke-width:1.3;fill:none}
+.mindmap .mm-l--miss{stroke:var(--copper);stroke-dasharray:5 5}
+.mindmap .mm-s{stroke:var(--caption);stroke-width:1;fill:none}
+.mindmap .mm-c{fill:var(--accent)}
+.mindmap .mm-ct{fill:var(--accent-fg);font:500 15px var(--sans)}
+.mindmap .mm-n{fill:var(--tint)}
+.mindmap .mm-n--miss{fill:none;stroke:var(--copper);stroke-dasharray:5 5}
+.mindmap .mm-t{fill:var(--fg);font:500 14px var(--sans)}
+.mindmap .mm-t--miss{fill:var(--copper)}
+.mindmap .mm-d{fill:var(--caption)}
+.js [data-anim] .mindmap .mm-l,.js [data-anim] .mindmap .mm-s{stroke-dasharray:400;stroke-dashoffset:0;transition:stroke-dashoffset 1.1s ease}
+.js [data-anim] .mindmap .mm-l--miss{stroke-dasharray:5 5}
+.js [data-anim]:not(.in) .mindmap .mm-l:not(.mm-l--miss),.js [data-anim]:not(.in) .mindmap .mm-s{stroke-dashoffset:400}
+.js [data-anim] .mindmap .mm-g{transition:opacity .5s ease;transition-delay:calc(var(--i) * 120ms + 400ms)}
+.js [data-anim]:not(.in) .mindmap .mm-g{opacity:0}
+
+/* five steps */
+.five{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:6px}
+.five li{padding:18px 16px 20px;background:var(--tint);display:flex;flex-direction:column;gap:8px}
+.five li:nth-child(5){background:var(--accent);color:var(--accent-fg)}
+.five .num{font-size:36px}
+.five li:nth-child(5) .num{color:var(--copper)}
+.five b{font-weight:500;font-size:17px}
+.five span{font-size:15px;line-height:1.4;opacity:.85}
+@media (max-width:1280px){.five{grid-template-columns:1fr}.five li{display:grid;grid-template-columns:44px 1fr;column-gap:12px;row-gap:2px}.five .num{grid-row:span 2}}
+
+/* bottleneck */
+.neck{display:flex;align-items:center;gap:0;height:170px;position:relative}
+.neck__st{flex:1;position:relative;display:flex;align-items:center;justify-content:center}
+.neck__st i{display:block;width:78%;height:var(--h);background:var(--tint-2);transition:height .8s cubic-bezier(.6,.05,.25,1);transition-delay:calc(var(--i) * 90ms)}
+.neck__st.is-limit i{background:var(--accent)}
+.neck__st:not(:last-child)::after{content:"";position:absolute;right:-11%;width:22%;height:1px;background:var(--caption);top:50%}
+.neck__lbl{display:flex;margin-top:10px}
+.neck__lbl span{flex:1;font-size:14px;line-height:1.3;text-align:center;color:var(--caption)}
+.neck__lbl span.on{color:var(--fg);font-weight:500}
+.js [data-anim]:not(.in) .neck__st i{height:4px}
+
+/* contradiction */
+.contra{display:grid;grid-template-columns:1fr auto 1.4fr;gap:var(--s2);align-items:stretch;margin-top:var(--s2)}
+.contra__from,.contra__to{padding:18px 20px;font-weight:500;line-height:1.35}
+.contra__from{background:var(--subtle);color:var(--muted);display:flex;flex-direction:column;justify-content:center}
+.contra__from s{text-decoration-thickness:1px;text-decoration-color:var(--caption)}
+.contra__to{background:var(--accent);color:var(--accent-fg);font-size:18px}
+.contra small{display:block;font-size:13px;font-weight:500;opacity:.7;margin-bottom:6px}
+.contra__arrow{align-self:center;width:36px;height:1px;background:var(--caption);position:relative}
+.contra__arrow::after{content:"";position:absolute;right:0;top:-4px;width:8px;height:8px;border-top:1px solid var(--caption);border-right:1px solid var(--caption);transform:rotate(45deg)}
+.section--subtle .contra__from{background:var(--subtle)}
+@media (max-width:640px){.contra{grid-template-columns:1fr}.contra__arrow{width:1px;height:24px;justify-self:start;margin-left:24px}.contra__arrow::after{top:auto;bottom:0;right:-4px;transform:rotate(135deg)}}
+
+/* synectics loop */
+.loop{position:relative;width:100%;max-width:460px;aspect-ratio:1/1;margin:0 auto}
+.loop svg{position:absolute;inset:0;width:100%;height:100%}
+.loop .lp-c{fill:none;stroke:var(--caption);stroke-width:1.2}
+.loop .lp-a{fill:var(--caption)}
+.loop__n{position:absolute;transform:translate(-50%,-50%);width:min(40%,180px);padding:12px 14px;background:var(--tint);text-align:center;font-size:15px;line-height:1.3;font-weight:500}
+.loop__n.is-home{background:var(--accent);color:var(--accent-fg)}
+.loop__n:nth-of-type(1){left:50%;top:12%}
+.loop__n:nth-of-type(2){left:79%;top:50%}
+.loop__n:nth-of-type(3){left:50%;top:88%}
+.loop__n:nth-of-type(4){left:21%;top:50%}
+.js [data-anim] .loop svg{transition:transform 1.2s cubic-bezier(.6,.05,.25,1),opacity .6s}
+.js [data-anim]:not(.in) .loop svg{transform:rotate(-90deg);opacity:0}
+
+/* empathy */
+.emp{display:grid;grid-template-columns:1fr 1.1fr 1fr;grid-template-areas:"a x b" "c x d" "e x f";gap:6px}
+.emp > div{background:var(--tint);padding:18px 16px;min-height:84px;display:flex;align-items:flex-end}
+.emp b{font-weight:500;font-size:17px;line-height:1.3}
+.emp > div:nth-child(2){grid-area:a}.emp > div:nth-child(3){grid-area:b}.emp > div:nth-child(4){grid-area:c}
+.emp > div:nth-child(5){grid-area:d}.emp > div:nth-child(6){grid-area:e}.emp > div:nth-child(7){grid-area:f}
+.emp .emp__who{grid-area:x;background:var(--accent);color:var(--accent-fg);align-items:center;justify-content:center;text-align:center;font-weight:500;font-size:18px;line-height:1.3;padding:24px}
+@media (max-width:640px){.emp{grid-template-columns:1fr 1fr;grid-template-areas:"x x" "a b" "c d" "e f"}}
+/* как применяется, сложность и инсайт */
+.how{margin-top:var(--s4)}
+.how h5,.fit h5,.explore h4{font-size:15px;color:var(--caption);font-weight:500;margin:0 0 8px}
+.how p{color:var(--muted);max-width:62ch;margin-bottom:var(--s2)}
+.flow--sm li{font-size:14px}
+.flow--sm li span{padding:9px 13px}
+.mp .flow li span{background:var(--bg)}
+.section--subtle .mp .flow li span{background:var(--tint)}
+.mp .flow li.is-key span{background:var(--accent)}
+.fit{margin-top:var(--s4);padding-top:var(--s4);border-top:1px solid var(--line);display:grid;grid-template-columns:1fr 1.35fr;gap:var(--s3) var(--s4)}
+.fit__pain{font-weight:500;line-height:1.4}
+.fit__pain small{display:block;font-size:14px;color:var(--caption);font-weight:500;margin-bottom:6px}
+.fit__insight{font-family:var(--serif);font-style:italic;font-size:clamp(18px,.5vw + 15px,21px);line-height:1.4}
+@media (max-width:760px){.fit{grid-template-columns:1fr}}
+.five.ideas{grid-template-columns:1fr}
+.five.ideas li{display:grid;grid-template-columns:56px 1fr auto;align-items:center;column-gap:16px;padding:14px 20px}
+.five.ideas .num{font-size:40px;grid-row:auto}
+.five.ideas b{font-size:17px}
+@media (max-width:560px){.five.ideas li{grid-template-columns:44px 1fr;row-gap:2px}.five.ideas .num{grid-row:span 2}}
+.ideas li > span:last-child{font-size:13px;opacity:.65;letter-spacing:.02em}
+.analog{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.analog div{background:var(--bg);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.analog b{font-weight:500}
+.analog span{color:var(--muted);font-size:15px;line-height:1.4}
+@media (max-width:560px){.analog{grid-template-columns:1fr}}
+/* дополнительные механики */
+.xgroup{margin-top:var(--s3)}
+.xgroup + .xgroup{margin-top:var(--s4)}
+.xgroup__head{display:grid;grid-template-columns:1fr 1.35fr;gap:var(--s2) var(--s4);margin-bottom:var(--s2)}
+@media (max-width:760px){.xgroup__head{grid-template-columns:1fr}}
+.x{background:var(--subtle);margin-top:4px}
+.section--subtle .x{background:var(--card)}
+.x summary{list-style:none;cursor:pointer;padding:15px 52px 15px 18px;font-weight:500;position:relative;line-height:1.35}
+.x summary::-webkit-details-marker{display:none}
+.x summary::after{content:"";position:absolute;right:22px;top:50%;width:8px;height:8px;margin-top:-6px;border-right:1.5px solid var(--fg);border-bottom:1.5px solid var(--fg);transform:rotate(45deg);transition:transform .2s}
+.x[open] summary::after{transform:rotate(225deg);margin-top:-2px}
+.x summary:hover{color:var(--accent-hover)}
+.x__body{padding:0 18px 20px;display:flex;flex-direction:column;gap:10px}
+.x__body p{color:var(--muted);max-width:62ch}
+.x__body ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.x__body li{font-family:var(--serif);font-style:italic;font-size:18px;line-height:1.35;padding-left:22px;position:relative}
+.x__body li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--copper)}
+.x__body .chip{background:var(--bg)}
+.x__note{font-size:15px}
+.x[open] .x__body{animation:swap .3s ease}
+.explore{background:var(--tint);padding:clamp(24px,3vw,40px)}
+.explore ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.explore li{font-family:var(--serif);font-style:italic;font-size:clamp(19px,.8vw + 14px,24px);line-height:1.35}
+.explore li::first-letter{text-transform:uppercase}
+.section--subtle .explore{background:var(--card)}
+.overview__intro{display:grid;grid-template-columns:5fr 7fr;gap:var(--s3) var(--s8);margin-bottom:var(--s8);align-items:start}
+.overview__intro ul{list-style:none;margin:0;padding:0;columns:2;column-gap:var(--s4)}
+.overview__intro li{break-inside:avoid;padding:10px 0 10px 22px;position:relative;border-bottom:1px solid var(--line);line-height:1.4}
+.overview__intro li::before{content:"";position:absolute;left:0;top:21px;width:10px;height:1px;background:var(--copper)}
+.overview__intro .lead{font-weight:500}
+.overview__intro .after{grid-column:1/-1;font-size:var(--fs-h3);line-height:1.4;max-width:60ch}
+@media (max-width:900px){.overview__intro{grid-template-columns:1fr}.overview__intro ul{columns:1}}
+.extra__list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.extra__list li{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);gap:4px var(--s3);padding:12px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.4;background:none!important;color:var(--fg)}
+.extra__list li:last-child{border-bottom:0}
+.extra__list b{font-weight:500}
+.extra__list span{color:var(--muted)}
+@media (max-width:640px){.extra__list li{grid-template-columns:1fr}}
+.extra__lead{font-size:17px;font-weight:500;line-height:1.3;margin:0 0 var(--s1)}
+.chain-block--top{padding-top:0}
+.chain-block__note{margin-top:var(--s2);color:var(--muted);max-width:62ch}
+.flow--tools li span small{display:block;font-size:12px;font-weight:400;color:var(--caption);margin-top:3px}
+.flow--tools li.is-key span small{color:var(--accent-fg);opacity:.7}
+.mp__tag--short::before{background:transparent;border:1.5px solid var(--accent)}
+.fish{width:100%;height:auto;display:block}
+.fish .fs-spine{stroke:var(--fg);stroke-width:2;fill:none}
+.fish .fs-bone{stroke:var(--fg);stroke-width:1.3;fill:none}
+.fish .fs-sub{stroke:var(--caption);stroke-width:1;fill:none}
+.fish .fs-t{fill:var(--fg);font:500 14px var(--sans)}
+.fish .fs-head{fill:var(--accent)}
+.fish .fs-ht{fill:var(--accent-fg);font:500 15px var(--sans)}
+@media (max-width:560px){.fish{min-width:500px}}
+.js [data-anim] .fish .fs-bone,.js [data-anim] .fish .fs-sub{stroke-dasharray:130;stroke-dashoffset:0;transition:stroke-dashoffset 1s ease .3s}
+.js [data-anim]:not(.in) .fish .fs-bone,.js [data-anim]:not(.in) .fish .fs-sub{stroke-dashoffset:130}
+.medals{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.medals li{background:var(--bg);padding:18px;display:flex;flex-direction:column;gap:6px}
+.section--subtle .medals li{background:var(--subtle)}
+.medals i{width:28px;height:28px;border-radius:50%;background:var(--c);display:block;margin-bottom:6px}
+.medals i.glass{background:transparent;border:2px solid var(--c)}
+.medals b{font-weight:500}
+.medals span{font-size:15px;line-height:1.4;color:var(--muted)}
+@media (max-width:760px){.medals{grid-template-columns:1fr 1fr}}
+@media (max-width:420px){.medals{grid-template-columns:1fr}}
+.res__lead{margin-top:var(--s8);padding:clamp(24px,3.4vw,48px);background:var(--tint);font-size:var(--fs-h3);line-height:1.45;font-weight:500}
+.res__lead small{display:block;font-size:15px;color:var(--caption);margin-bottom:10px}
+.mp__note{margin-top:var(--s4);padding:var(--s3);background:var(--bg)}
+.section--subtle .mp__note{background:var(--subtle)}
+.mp__note p{color:var(--fg)}
+.mp__note p + p{margin-top:var(--s1);color:var(--muted)}
+
+/* ---------- Day timeline ---------- */
+.day__top{display:grid;grid-template-columns:5fr 7fr;gap:var(--s8);align-items:end;margin-bottom:var(--s8)}
+.day__hint{font-size:15px;color:var(--caption);margin-bottom:var(--s2)}
+.tl{display:flex;gap:4px;align-items:stretch}
+.tl__seg{all:unset;box-sizing:border-box;flex:var(--g) 1 0;min-width:0;cursor:pointer;display:flex;flex-direction:column;gap:10px}
+.tl__bar{display:block;height:56px;background:var(--tint);position:relative;transition:background-color .2s}
+.tl__seg.is-break .tl__bar{background:repeating-linear-gradient(135deg,var(--subtle) 0 6px,var(--tint) 6px 12px)}
+.tl__seg.is-mp .tl__bar{background:var(--tint-2)}
+.tl__seg:hover .tl__bar{background:var(--tint-2)}
+.tl__seg[aria-selected="true"] .tl__bar{background:var(--accent)}
+.tl__seg:focus-visible .tl__bar{outline:2px solid var(--copper);outline-offset:2px}
+.tl__time{font-size:13px;color:var(--caption);font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tl__name{font-size:13px;line-height:1.25;font-weight:500;overflow-wrap:break-word;hyphens:manual}
+.tl__seg[aria-selected="true"] .tl__name{color:var(--fg)}
+.tl__seg:not([aria-selected="true"]) .tl__name{color:var(--muted)}
+.tl__scale{display:flex;justify-content:space-between;margin-top:var(--s2);font-size:13px;color:var(--caption)}
+.panel{margin-top:var(--s6);display:grid;grid-template-columns:4fr 7fr;gap:var(--s6);background:var(--card);padding:clamp(24px,3.4vw,48px)}
+.panel__time{font-family:var(--serif);font-style:italic;color:var(--copper);font-size:clamp(28px,2vw + 14px,44px);line-height:1;margin-bottom:var(--s2);font-variant-numeric:tabular-nums}
+.panel__title{font-size:var(--fs-h2);line-height:1.1;letter-spacing:-.015em}
+.panel__nav{display:flex;gap:8px;margin-top:var(--s4)}
+.panel__nav button{all:unset;box-sizing:border-box;min-height:44px;padding:10px 18px;border-radius:9999px;border:1px solid var(--fg);cursor:pointer;font-weight:500;font-size:15px;transition:background-color .2s,color .2s}
+.panel__nav button:hover{background:var(--fg);color:var(--bg)}
+.panel__nav button:focus-visible{outline:2px solid var(--copper);outline-offset:3px}
+.panel__nav button[disabled]{opacity:.35;pointer-events:none}
+.panel__body p{color:var(--muted);max-width:60ch}
+.panel__body p + p{margin-top:var(--s2)}
+.panel__body p b{color:var(--fg);font-weight:500}
+.panel__body ul{list-style:none;margin:var(--s3) 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.panel__body li{font-family:var(--serif);font-style:italic;font-size:clamp(18px,.6vw + 14px,21px);line-height:1.35;padding-left:22px;position:relative}
+.panel__body li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:1px;background:var(--copper)}
+.panel__body .after{margin-top:var(--s3)}
+.panel.is-swap .panel__body,.panel.is-swap .panel__head{animation:swap .35s ease}
+@keyframes swap{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (max-width:900px){.day__top{grid-template-columns:1fr;gap:var(--s4)}.panel{grid-template-columns:1fr;gap:var(--s3)}}
+@media (max-width:700px){
+  .tl{flex-direction:column;gap:4px}
+  .tl__seg{flex:none;flex-direction:row;align-items:stretch;gap:12px}
+  .tl__bar{width:10px;height:auto;min-height:calc(var(--m) * 1.6px + 22px);flex:none}
+  .tl__seg .tl__txt{padding:6px 0}
+  .tl__scale{display:none}
+  .panel{margin:6px 0 10px}
+}
+.tl__txt{display:flex;flex-direction:column;gap:2px;min-width:0}
+
+/* ---------- Results ---------- */
+.res{display:grid;grid-template-columns:5fr 7fr;gap:var(--s8);align-items:start}
+.res__list{list-style:none;margin:0;padding:0;columns:2;column-gap:var(--s6)}
+.res__list li{break-inside:avoid;padding:14px 0 14px 26px;border-bottom:1px solid var(--line);position:relative;font-size:18px;line-height:1.4}
+.res__list li::before{content:"";position:absolute;left:0;top:25px;width:12px;height:1px;background:var(--copper)}
+.res__final{margin-top:var(--s12)}
+.res__final h3{margin-bottom:var(--s4)}
+@media (min-width:1100px){.flow--fit{flex-wrap:nowrap}.flow--fit li{flex:1 1 auto}.flow--fit li span{flex:1;text-align:center}}
+@media (max-width:900px){.res{grid-template-columns:1fr;gap:var(--s4)}.res__list{columns:1}}
+
+/* ---------- CTA ---------- */
+.cta{text-align:left}
+.cta__grid{display:grid;grid-template-columns:7fr 5fr;gap:var(--s8);align-items:end}
+.cta .display{color:#fff;margin-bottom:var(--s6)}
+.cta__text{color:var(--band-muted);font-size:var(--fs-lead);max-width:36ch;margin-bottom:var(--s4)}
+.cta__contacts{display:flex;flex-direction:column;gap:6px;margin-top:var(--s4);font-size:16px}
+.cta__contacts a{color:#fff;text-decoration:none;opacity:.85}
+.cta__contacts a:hover{opacity:1;text-decoration:underline}
+@media (max-width:900px){.cta__grid{grid-template-columns:1fr}}
+
+/* ---------- Footer ---------- */
+.foot{padding:var(--s6) 0}
+.foot__in{display:flex;justify-content:space-between;align-items:center;gap:var(--s3);flex-wrap:wrap}
+.foot__copy{font-size:14px;color:var(--caption)}
+@media (max-width:640px){.foot__in{justify-content:center;text-align:center}}
+
+
+.answer__through{font-size:var(--fs-h3);line-height:1.4;font-weight:500;max-width:48ch;color:#fff}
+.triad li:not(:last-child)::after{display:none}
+.tasks{padding-top:0}
+.tasks__h{max-width:18ch;margin-bottom:var(--s8)}
+.tasks__grid{display:flex;flex-direction:column;gap:6px}
+.tasks__cols,.task{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr) minmax(0,1fr);gap:0}
+.tasks__cols span{font-size:15px;color:var(--caption);font-weight:500;padding:0 24px 8px 0}
+.task{text-decoration:none;color:inherit;background:var(--subtle);transition:background-color .2s,opacity .5s ease,transform .5s ease;transition-delay:0s,calc(var(--i)*150ms),calc(var(--i)*150ms)}
+.task:hover{background:var(--tint)}
+.task > span{padding:clamp(20px,2.4vw,32px);position:relative}
+.task > span:not(:last-child)::after{content:"";position:absolute;right:-6px;top:50%;width:12px;height:12px;margin-top:-6px;border-top:1.5px solid var(--caption);border-right:1.5px solid var(--caption);transform:rotate(45deg);z-index:1}
+.task__type{font-size:var(--fs-h3);font-weight:500;line-height:1.3;display:flex;gap:16px;align-items:baseline}
+.task__type .num{font-size:clamp(28px,2vw + 10px,40px);flex:none}
+.task__do{color:var(--muted);line-height:1.45;display:flex;align-items:center}
+.task__tools{display:flex;flex-wrap:wrap;gap:6px;align-content:center;background:var(--accent);color:var(--accent-fg)}
+.task__tools span{padding:6px 12px;background:rgba(255,255,255,.12);font-size:15px;font-weight:500}
+.tasks__note{margin-top:var(--s6);font-size:var(--fs-h3);line-height:1.4;font-weight:500;max-width:52ch}
+.js .tasks__grid[data-anim]:not(.in) .task{opacity:0;transform:translateY(10px)}
+@media (max-width:860px){
+  .tasks__cols{display:none}
+  .task{grid-template-columns:1fr}
+  .task > span:not(:last-child)::after{right:auto;left:clamp(20px,2.4vw,32px);top:auto;bottom:-6px;margin-top:0;transform:rotate(135deg)}
+}
+.theory__sub{margin-top:var(--s3);color:var(--muted)}
+.theory__out{margin-top:var(--s8);font-size:var(--fs-h2);line-height:1.25;letter-spacing:-.015em;font-weight:500;max-width:30ch}
+.theory__out em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--copper)}
+.learn__top{display:block;max-width:980px;margin-bottom:var(--s8)}
+.principles{margin-top:var(--s8);display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.principle{background:var(--subtle);padding:clamp(24px,3vw,40px)}
+.principle h4{font-size:15px;color:var(--caption);font-weight:500;margin-bottom:var(--s2)}
+.principle p{font-size:var(--fs-h3);line-height:1.4;font-weight:500}
+.principle .chip{background:var(--bg)}
+@media (max-width:860px){.principles{grid-template-columns:1fr}}
+.overview__lead{font-size:var(--fs-h3);line-height:1.45;max-width:62ch;margin-bottom:var(--s8)}
+.trio li::after,.trio li::before{display:none!important}
+.biz{background:var(--accent);color:var(--accent-fg);padding:clamp(24px,3vw,40px)}
+.biz h4{font-size:15px;font-weight:500;opacity:.75;margin-bottom:var(--s1)}
+.biz p{font-size:var(--fs-h3);font-weight:500;line-height:1.35}
+.biz .chip{background:rgba(255,255,255,.12)}
+.day__top{display:block;max-width:900px;margin-bottom:var(--s4)}
+.day__logic{margin-bottom:var(--s8)}
+.section--subtle .day__logic li span{background:var(--card)}
+.section--subtle .day__logic li.is-key span{background:var(--accent)}
+.section--subtle .day__logic li.is-mark span{background:var(--card)}
+.insights{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:var(--s8) 0}
+.insight{background:var(--tint);padding:clamp(28px,4vw,56px);display:flex;flex-direction:column;gap:var(--s3);transition:opacity .6s ease,transform .6s ease;transition-delay:calc(var(--i)*180ms)}
+.insight--dark{background:var(--band);color:var(--band-fg)}
+.insight__q{font-family:var(--serif);font-style:italic;font-size:clamp(28px,2.4vw + 12px,48px);line-height:1.1}
+.insight p:not(.insight__q){font-size:18px;line-height:1.5;opacity:.85;max-width:44ch}
+.js .insights[data-anim]:not(.in) .insight{opacity:0;transform:translateY(12px)}
+@media (max-width:860px){.insights{grid-template-columns:1fr}}
+@media (min-width:901px){.res{grid-template-columns:4fr 8fr}}
+.choice{margin-top:var(--s12);display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);align-items:center}
+.choice__hub{position:relative;background:var(--accent);color:var(--accent-fg);padding:clamp(24px,3vw,40px);font-size:var(--fs-h2);line-height:1.15;font-weight:500;letter-spacing:-.015em}
+.choice__hub::after{content:"";position:absolute;right:-32px;top:50%;width:32px;height:1.5px;background:var(--caption)}
+.choice__list{list-style:none;margin:0 0 0 32px;padding:0;position:relative;display:flex;flex-direction:column;gap:10px}
+.choice__list::before{content:"";position:absolute;left:0;top:calc(100%/6);bottom:calc(100%/6);width:1.5px;background:var(--caption)}
+.choice__list li{position:relative;padding-left:40px;transition:opacity .5s ease,transform .5s ease;transition-delay:calc(var(--i)*140ms + 200ms)}
+.choice__list li::before{content:"";position:absolute;left:0;top:50%;width:40px;height:1.5px;background:var(--caption)}
+.choice__list a{display:grid;grid-template-columns:1fr auto;align-items:center;gap:var(--s3);padding:clamp(18px,2vw,26px) clamp(20px,2.4vw,32px);background:var(--tint);text-decoration:none;color:inherit;transition:background-color .2s}
+.choice__list a:hover{background:var(--tint-2)}
+.choice__need{font-size:var(--fs-h3);font-weight:500;line-height:1.3}
+.choice__pr{display:flex;align-items:baseline;gap:10px;font-weight:500;white-space:nowrap}
+.choice__pr .num{font-size:32px}
+.js .choice[data-anim]:not(.in) .choice__list li{opacity:0;transform:translateX(-8px)}
+@media (max-width:860px){
+  .choice{grid-template-columns:1fr}
+  .choice__hub::after{right:auto;left:32px;top:100%;width:1.5px;height:24px}
+  .choice__list{margin:24px 0 0 32px}
+  .choice__list::before{top:-24px;bottom:calc(100%/6)}
+  .choice__list li{padding-left:24px}
+  .choice__list li::before{width:24px}
+  .choice__list a{grid-template-columns:1fr;gap:6px}
+}
+.cta__main{font-size:var(--fs-h3);line-height:1.4;font-weight:500;color:#fff;max-width:36ch;margin-bottom:var(--s3)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{transition:none!important;animation:none!important}
+}
+
+/* ===== Мыслепрактики: дополнения ===== */
+.hero__cap{font-size:15px;font-weight:500;color:var(--caption);margin-bottom:var(--s3)}
+.hero h1{max-width:15ch}
+.paths__meta{margin-top:10px;font-size:14px;color:var(--caption);text-align:center}
+.obox{width:100%;max-width:360px;padding:18px 20px;font-weight:500;font-size:16px;line-height:1.4;text-align:left}
+.obox small{display:block;font-size:13px;font-weight:500;opacity:.75;margin-bottom:8px;letter-spacing:.01em}
+.obox--bad{background:var(--subtle);color:var(--muted);outline:1.5px dashed var(--caption);outline-offset:-1.5px}
+.obox--good{background:var(--accent);color:var(--accent-fg)}
+.obox ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.obox li{padding-left:18px;position:relative}
+.obox li::before{content:"";position:absolute;left:0;top:.7em;width:9px;height:1px;background:currentColor;opacity:.6}
+.obox--good li::before{background:var(--copper);opacity:1}
+.path__end svg{max-width:360px}
+.paths__note{margin-top:var(--s2);font-size:14px;color:var(--caption)}
+
+/* cost band */
+.cost__head{display:grid;grid-template-columns:7fr 5fr;gap:var(--s8);align-items:end;margin-bottom:var(--s8)}
+.cost__head .h1{color:#fff}
+.cost__head p{color:var(--band-muted);font-size:var(--fs-lead);line-height:1.5}
+.stats4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0}
+.stats4 > div{padding:var(--s3) var(--s4) var(--s3) 0;border-top:1px solid var(--band-line)}
+.stats4 .stats__v{font-size:clamp(48px,3.6vw + 14px,92px);white-space:nowrap}
+.stats4 .stats__l{font-size:16px;line-height:1.45;opacity:.9;margin-top:var(--s2)}
+.stats4 .src{display:block;margin-top:8px;font-size:13px;color:var(--band-muted)}
+.cost__out{margin-top:var(--s8);font-size:var(--fs-h3);line-height:1.4;font-weight:500;max-width:52ch}
+@media (max-width:980px){.stats4{grid-template-columns:1fr 1fr}.cost__head{grid-template-columns:1fr;gap:var(--s3)}}
+@media (max-width:520px){.stats4{grid-template-columns:1fr}}
+
+/* why + biases */
+.why{display:grid;grid-template-columns:6fr 5fr;gap:var(--s8);align-items:start;margin-bottom:var(--s8)}
+.why .body{font-size:18px}
+.why__key{font-size:var(--fs-h3);line-height:1.4;font-weight:500}
+.why__key em{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--copper)}
+@media (max-width:900px){.why{grid-template-columns:1fr;gap:var(--s4)}}
+
+/* definition extras */
+.attrs{list-style:none;margin:var(--s4) 0 0;padding:0;display:flex;flex-direction:column}
+.attrs li{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:14px 0;border-bottom:1px solid var(--line);line-height:1.45}
+.attrs li:last-child{border-bottom:0}
+.attrs .num{font-size:28px}
+.synth{margin-top:var(--s8);display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.synth > div{padding:clamp(24px,3vw,40px);background:var(--tint)}
+.synth > div:last-child{background:var(--band);color:var(--band-fg)}
+.synth h4{font-size:15px;font-weight:500;opacity:.7;margin:0 0 var(--s2)}
+.synth p{font-size:var(--fs-h3);line-height:1.4;font-weight:500}
+@media (max-width:860px){.synth{grid-template-columns:1fr}}
+
+/* library */
+.task__tools span{font-size:14px}
+.task__do{font-weight:500;color:var(--fg)}
+.task__mod{display:block;font-size:13px;color:var(--caption);font-weight:500;margin-top:6px}
+
+/* modules */
+.mods{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(8px,1vw,12px)}
+.mod{background:var(--card);padding:clamp(22px,2.4vw,32px);display:flex;flex-direction:column;gap:var(--s2)}
+.mod .num{font-size:clamp(56px,4vw + 16px,96px)}
+.mod__meta{font-size:14px;color:var(--caption);font-weight:500}
+.mod h3{font-size:clamp(21px,1vw + 14px,28px);line-height:1.2}
+.mod__core{display:flex;flex-direction:column;gap:6px}
+.mod__core span{padding:9px 12px;background:var(--tint);font-weight:500;font-size:15px;line-height:1.3}
+.mod__add{font-size:14px;color:var(--muted);line-height:1.45}
+.mod__art{margin-top:auto;padding-top:var(--s3);border-top:1px solid var(--line)}
+.mod__art small{display:block;font-size:13px;color:var(--caption);font-weight:500;margin-bottom:4px}
+.mod__art p{font-weight:500;line-height:1.4}
+.mods__foot{margin-top:var(--s6);display:grid;grid-template-columns:auto 1fr;gap:var(--s4) var(--s8);align-items:center}
+.mods__foot .stats{color:var(--fg)}
+.mods__foot .stats__l{opacity:1;color:var(--muted)}
+.mods__foot p{color:var(--muted);max-width:52ch}
+@media (max-width:1100px){.mods{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){.mods{grid-template-columns:1fr}.mods__foot{grid-template-columns:1fr}}
+
+/* examples */
+.ex{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,20px);align-items:start}
+@media (max-width:980px){.ex{grid-template-columns:1fr}}
+.steps3{list-style:none;margin:var(--s3) 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.steps3 li{background:var(--bg);padding:16px 18px;display:grid;grid-template-columns:44px 1fr;gap:4px 12px}
+.steps3 li:last-child{background:var(--accent);color:var(--accent-fg)}
+.steps3 .num{font-size:30px;grid-row:span 2}
+.steps3 li:last-child .num{color:var(--copper)}
+.steps3 b{font-weight:500}
+.steps3 span{font-size:15px;line-height:1.45;opacity:.85}
+.ev{margin-top:var(--s3);font-size:14px;color:var(--caption);line-height:1.45}
+
+/* comparison */
+.cmp-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.cmp{width:100%;min-width:720px;border-collapse:collapse}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:18px 20px 18px 0;border-bottom:1px solid var(--line);line-height:1.45}
+.cmp thead th{font-size:15px;font-weight:500;color:var(--caption);padding-top:0}
+.cmp tbody th{font-weight:500;width:16%}
+.cmp td{color:var(--muted)}
+.cmp td.is-us,.cmp th.is-us{background:var(--tint);color:var(--fg);padding-left:20px;font-weight:500}
+.cmp thead th.is-us{color:var(--fg)}
+.cmp tbody tr:last-child th,.cmp tbody tr:last-child td{border-bottom:0}
+
+/* evaluation */
+.eval{display:grid;grid-template-columns:7fr 5fr;gap:6px}
+.levels{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.levels li{background:var(--tint);padding:clamp(20px,2.4vw,30px);display:grid;grid-template-columns:64px 1fr auto;gap:4px var(--s3);align-items:start}
+.levels .num{font-size:44px;grid-row:span 2}
+.levels b{font-weight:500;font-size:var(--fs-h3);line-height:1.25}
+.levels span{color:var(--muted);line-height:1.45}
+.levels em{font-style:normal;font-size:13px;font-weight:500;color:var(--caption);white-space:nowrap;grid-row:1;grid-column:3}
+.rules{background:var(--band);color:var(--band-fg);padding:clamp(24px,3vw,44px);display:flex;flex-direction:column;gap:var(--s4)}
+.rules h3{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(26px,1.6vw + 16px,40px)}
+.rules p{font-size:18px;line-height:1.45;padding-top:var(--s3);border-top:1px solid var(--band-line)}
+@media (max-width:900px){.eval{grid-template-columns:1fr}.levels li{grid-template-columns:48px 1fr}.levels em{grid-column:2;grid-row:auto}}
+
+/* pilot */
+.pilot__head{display:grid;grid-template-columns:7fr 5fr;gap:var(--s8);align-items:end;margin-bottom:var(--s8)}
+.pilot__head .lead{font-weight:500}
+@media (max-width:900px){.pilot__head{grid-template-columns:1fr;gap:var(--s3)}}
+.stages{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.stage{display:flex;flex-direction:column;background:var(--subtle)}
+.stage__top{padding:clamp(20px,2.4vw,30px);display:flex;flex-direction:column;gap:6px}
+.stage .num{font-size:clamp(44px,3vw + 14px,72px)}
+.stage h3{font-size:var(--fs-h3)}
+.stage__when{font-size:14px;color:var(--caption);font-weight:500}
+.stage__do{padding:0 clamp(20px,2.4vw,30px) var(--s3);color:var(--muted);line-height:1.45}
+.stage__get{min-height:100px;margin-top:auto;padding:clamp(18px,2vw,24px) clamp(20px,2.4vw,30px);background:var(--accent);color:var(--accent-fg);font-weight:500;line-height:1.4}
+.stage__get small{display:block;font-size:13px;opacity:.7;margin-bottom:4px}
+.pilot__first{margin-top:var(--s6);font-size:var(--fs-h3);line-height:1.4;font-weight:500;max-width:56ch}
+@media (max-width:1000px){.stages{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.stages{grid-template-columns:1fr}}
+
+/* theory compact */
+.th__src{font-size:13px;color:var(--caption);line-height:1.4}
+
+.th{display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,1.6vw,20px)}
+.th .card{background:var(--subtle)}
+.th__list{list-style:none;margin:var(--s2) 0 0;padding:0;display:flex;flex-direction:column}
+.th__list li{padding:14px 0;border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.th__list li:last-child{border-bottom:0}
+.th__list b{font-weight:500}
+.th__list span{color:var(--muted);line-height:1.45}
+@media (max-width:900px){.th{grid-template-columns:1fr}}
+
+/* practice chips + dialog */
+.pchip{all:unset;box-sizing:border-box;cursor:pointer;padding:6px 12px;background:rgba(255,255,255,.12);font-size:14px;font-weight:500;line-height:1.3;color:inherit;position:relative;transition:background-color .2s}
+.pchip::after{content:"";display:inline-block;width:5px;height:5px;margin-left:8px;vertical-align:2px;border-top:1.3px solid currentColor;border-right:1.3px solid currentColor;transform:rotate(45deg);opacity:.6}
+.pchip:hover{background:rgba(255,255,255,.26)}
+.pchip:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.pchip--mod{display:block;padding:9px 12px;background:var(--tint);font-size:15px}
+.pchip--mod:hover{background:var(--tint-2)}
+.plink{all:unset;cursor:pointer;color:var(--fg);text-decoration:underline;text-decoration-color:var(--copper);text-underline-offset:.2em}
+.plink:hover{color:var(--accent-hover)}
+.plink:focus-visible{outline:2px solid var(--copper);outline-offset:2px}
+.pd{border:0;padding:0;margin:auto;width:min(620px,calc(100% - 32px));max-height:calc(100% - 48px);background:var(--bg);color:var(--fg)}
+.pd::backdrop{background:rgba(25,25,76,.55)}
+.pd[open]{animation:swap .3s ease}
+.pd__in{position:relative;padding:clamp(28px,4vw,48px)}
+.pd__x{all:unset;cursor:pointer;position:absolute;top:14px;right:14px;width:44px;height:44px;border-radius:50%}
+.pd__x::before,.pd__x::after{content:"";position:absolute;left:13px;top:21px;width:18px;height:1.5px;background:var(--fg);transform:rotate(45deg)}
+.pd__x::after{transform:rotate(-45deg)}
+.pd__x:hover{background:var(--tint)}
+.pd__x:focus-visible{outline:2px solid var(--copper)}
+.pd__cap{font-size:14px;color:var(--caption);font-weight:500;margin-bottom:6px}
+.pd__title{font-size:clamp(26px,1.6vw + 16px,38px);letter-spacing:-.015em;margin-bottom:var(--s3);padding-right:40px}
+.pd__list{margin:0;display:flex;flex-direction:column}
+.pd__list > div{display:grid;grid-template-columns:150px 1fr;gap:4px var(--s3);padding:14px 0;border-top:1px solid var(--line)}
+.pd__list dt{font-size:14px;color:var(--caption);font-weight:500;padding-top:2px}
+.pd__list dd{margin:0;line-height:1.5}
+.pd__eff{margin-top:var(--s3);background:var(--band);color:var(--band-fg);padding:18px 20px;font-weight:500;line-height:1.45}
+.pd__eff small{display:block;font-size:13px;font-weight:500;opacity:.7;margin-bottom:6px}
+@media (max-width:560px){.pd{width:100%;max-width:100%;margin:auto 0 0;max-height:88%}.pd__list > div{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<script>document.documentElement.classList.add('js')</script>
+<header class="hdr">
+  <div class="container hdr__in">
+    <a href="https://bitobe.ru/" target="_blank" rel="noopener" class="logo-link" aria-label="BITOBE — на главную">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.18 105.41" aria-hidden="true">
+      <path fill="#182D8D" d="M42.84,104.23H0V1.18H43.72c5.1,0,9.62,.37,13.54,1.1,3.92,.74,7.68,2.01,11.26,3.83,3.58,1.82,6.33,4.49,8.24,8.02,1.91,3.53,2.87,7.85,2.87,12.96,0,10.21-4.12,17.86-12.37,22.97,10.6,3.44,15.9,11.48,15.9,24.14,0,5.69-1.15,10.58-3.46,14.65-2.31,4.07-5.45,7.19-9.42,9.35-3.98,2.16-8.22,3.71-12.74,4.64-4.51,.93-9.42,1.4-14.72,1.4Zm-1.47-86.27H17.81v25.62h25.47c4.81,0,9-.98,12.59-2.94,3.58-1.96,5.38-5.15,5.38-9.57,0-2.85-.54-5.2-1.62-7.07-1.08-1.86-2.68-3.19-4.79-3.98-2.11-.78-4.17-1.32-6.18-1.62-2.01-.29-4.44-.44-7.29-.44Zm1.47,41.81H17.81v27.68h23.85c3.14,0,5.84-.15,8.1-.44,2.26-.29,4.64-.88,7.14-1.77,2.5-.88,4.41-2.33,5.74-4.34,1.33-2.01,1.99-4.59,1.99-7.73,0-3.83-1.25-6.8-3.75-8.91-2.5-2.11-5.15-3.39-7.95-3.83-2.8-.44-6.16-.66-10.08-.66Z"/>
+      <path fill="#182D8D" d="M117.19,104.23h-17.81V1.18h17.81V104.23Z"/>
+      <path fill="#182D8D" d="M162.23,17.96h-34.6V1.18h87.01V17.96h-34.6V104.23h-17.81V17.96Z"/>
+      <path fill="#182D8D" d="M229.37,90.1c-10.11-10.21-15.16-22.67-15.16-37.39s5.13-27.19,15.38-37.39c10.26-10.21,22.7-15.31,37.32-15.31s27.68,5.06,37.69,15.16c10.01,10.11,15.02,22.62,15.02,37.54s-5.08,27.43-15.24,37.54c-10.16,10.11-22.65,15.16-37.47,15.16s-27.43-5.1-37.54-15.31Zm13.03-62.57c-6.43,6.97-9.64,15.36-9.64,25.17s3.29,18.21,9.86,25.17c6.58,6.97,14.67,10.45,24.29,10.45,10.11,0,18.33-3.41,24.66-10.23,6.33-6.82,9.49-15.29,9.49-25.4s-3.26-18.33-9.79-25.25c-6.53-6.92-14.65-10.38-24.37-10.38s-18.09,3.48-24.51,10.45Z"/>
+      <path fill="#182D8D" d="M377.62,104.23h-42.84V1.18h43.72c5.1,0,9.62,.37,13.54,1.1,3.92,.74,7.68,2.01,11.26,3.83,3.58,1.82,6.33,4.49,8.24,8.02,1.91,3.53,2.87,7.85,2.87,12.96,0,10.21-4.12,17.86-12.37,22.97,10.6,3.44,15.9,11.48,15.9,24.14,0,5.69-1.15,10.58-3.46,14.65-2.31,4.07-5.45,7.19-9.42,9.35-3.98,2.16-8.22,3.71-12.74,4.64-4.51,.93-9.42,1.4-14.72,1.4Zm-1.47-86.27h-23.55v25.62h25.47c4.81,0,9-.98,12.59-2.94,3.58-1.96,5.38-5.15,5.38-9.57,0-2.85-.54-5.2-1.62-7.07-1.08-1.86-2.68-3.19-4.79-3.98-2.11-.78-4.17-1.32-6.18-1.62-2.01-.29-4.44-.44-7.29-.44Zm1.47,41.81h-25.03v27.68h23.85c3.14,0,5.84-.15,8.1-.44,2.26-.29,4.64-.88,7.14-1.77,2.5-.88,4.41-2.33,5.74-4.34,1.33-2.01,1.99-4.59,1.99-7.73,0-3.83-1.25-6.8-3.75-8.91-2.5-2.11-5.15-3.39-7.95-3.83-2.8-.44-6.16-.66-10.08-.66Z"/>
+      <path fill="#182D8D" d="M512.18,104.23h-78.03V1.18h76.56V17.96h-58.74v25.91h54.91v16.19h-54.91v27.38h60.21v16.78Z"/>
+    </svg>
+    </a>
+    <nav class="hdr__nav" aria-label="Разделы">
+      <a href="#cost">Цена решений</a>
+      <a href="#practices">Подход</a>
+      <a href="#library">Практики</a>
+      <a href="#modules">Модули</a>
+      <a href="mailto:a.pronin@bitobe.ru" class="button button--sm">Обсудить программу</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<!-- 1. HERO: одна задача — два итога -->
+<section class="hero" id="top">
+  <div class="container">
+    <p class="hero__cap">Мыслепрактики BITOBE — регулярный менеджмент для крупных решений</p>
+    <div class="hero__grid">
+      <h1 class="h1">Итог крупного решения закладывается в его <em>начале</em></h1>
+      <div class="hero__text">
+        <p class="body">Сделка, реорганизация, запуск нового направления. Опытная команда быстро видит ответ, план одобряют единогласно, прогноз выглядит убедительно.</p>
+        <p class="body">Через полтора года выясняется, что главный риск видели многие, но никто не назвал его вслух, а прогноз строился по собственному плану без сверки с похожими проектами.</p>
+      </div>
+    </div>
+
+    <div class="paths" data-anim>
+      <div class="paths__task">
+        <span class="paths__taskbox">Интеграция купленной компании</span>
+        <span class="paths__meta">та же команда · те же данные · тот же бюджет</span>
+        <svg class="paths__split" viewBox="0 0 100 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M50 0 V16 M25 40 V16 H75 V40" vector-effect="non-scaling-stroke"/>
+        </svg>
+        <span class="paths__down" aria-hidden="true"></span>
+      </div>
+
+      <div class="path path--narrow">
+        <div class="path__head">
+          <h2 class="h3">Привычный ход</h2>
+          <span class="path__note">Опыт сразу подсказывает ответ</span>
+        </div>
+        <div class="path__field">
+          <div class="path__shape" aria-hidden="true"></div>
+          <ol class="path__steps">
+            <li style="--i:0;--w:90%">один план интеграции — «да» или «нет»</li>
+            <li style="--i:1;--w:76%">прогноз синергии от команды сделки</li>
+            <li style="--i:2;--w:62%">план одобрен единогласно</li>
+            <li style="--i:3;--w:50%">сомнения не произносятся</li>
+          </ol>
+        </div>
+        <div class="path__end">
+          <svg viewBox="0 0 360 36" aria-hidden="true"><path class="t-line" d="M180 0 V36"/></svg>
+          <div class="obox obox--bad">
+            <small>Через 18 месяцев</small>
+            <ul>
+              <li>ключевые продавцы ушли вместе с клиентами</li>
+              <li>синергия перенесена на следующий год</li>
+              <li>бюджет интеграции пересмотрен дважды</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="path path--wide">
+        <div class="path__head">
+          <h2 class="h3">Решение через мыслепрактики</h2>
+          <span class="path__note">Опыт работает внутри процедуры</span>
+        </div>
+        <div class="path__field">
+          <div class="path__shape" aria-hidden="true"></div>
+          <ol class="path__steps">
+            <li style="--i:0;--w:52%">три варианта интеграции вместо одного плана</li>
+            <li style="--i:1;--w:64%">прогноз по классу похожих сделок</li>
+            <li style="--i:2;--w:78%">премортем: «прошло 18 месяцев, интеграция провалилась»</li>
+            <li style="--i:3;--w:90%">критерии остановки и ранние сигналы до запуска</li>
+          </ol>
+        </div>
+        <div class="path__end">
+          <svg viewBox="0 0 360 36" aria-hidden="true"><path class="t-branch" d="M180 0 V36"/></svg>
+          <div class="obox obox--good">
+            <small>Через 18 месяцев</small>
+            <ul>
+              <li>продавцы удержаны бонусами, бренд сохранён на два года</li>
+              <li>отклонение по срокам — в пределах заложенного резерва</li>
+              <li>решение пересматривалось по заранее названному сигналу</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="paths__outro">Разница между итогами появилась задолго до конца проекта. Она заложена в первые часы работы над решением: сколько вариантов рассмотрели, с чем сверили прогноз, какие риски назвали вслух.</p>
+    <p class="paths__note">Условный пример, собранный по типовой ситуации интеграции после сделки.</p>
+  </div>
+</section>
+
+<!-- 2. ЦЕНА РЕШЕНИЙ -->
+<section class="section section--band" id="cost">
+  <div class="container">
+    <div class="cost__head">
+      <div>
+        <p class="caption">Что показывают исследования управленческих решений</p>
+        <h2 class="h1">Слабые решения стоят дороже, чем видно в <em>отчётах</em></h2>
+      </div>
+      <p>Потери растворяются в сроках, бюджетах и упущенных возможностях. В отчётах видна цена ошибки, но не видна цена процесса, который к ней привёл.</p>
+    </div>
+    <div class="stats4">
+      <div><div class="stats__v">×6</div><div class="stats__l">процесс подготовки решения влияет на результат сильнее, чем объём анализа<span class="src">1 048 крупных решений, Lovallo, Sibony, McKinsey, 2010</span></div></div>
+      <div><div class="stats__v">+6,9</div><div class="stats__l">п.п. ROI при переходе из худшей четверти по качеству процесса в лучшую<span class="src">там же</span></div></div>
+      <div><div class="stats__v">52%</div><div class="stats__l">провалов при выборе «да / нет» против 32%, когда рассматривались несколько вариантов<span class="src">P. Nutt, исследования управленческих решений</span></div></div>
+      <div><div class="stats__v">20%</div><div class="stats__l">организаций, по оценке их руководителей, хорошо принимают решения<span class="src">McKinsey, 2019</span></div></div>
+    </div>
+    <p class="cost__out">Разрыв между компаниями объясняется тем, как устроена работа над решением. Квалификация руководителей здесь вторична. Этому можно научить и встроить в регламент правления.</p>
+  </div>
+</section>
+
+<!-- 3. ПОЧЕМУ ОПЫТ НЕ ЗАЩИЩАЕТ -->
+<section class="section" id="why">
+  <div class="container">
+    <p class="caption">Почему опыт не защищает</p>
+    <div class="why" style="margin-bottom:0">
+      <h2 class="h1">Сильный опыт включается <em>автоматически</em></h2>
+      <div>
+        <p class="body">Опыт позволяет быстро распознавать знакомые ситуации и использовать проверенные способы решения. В крупной задаче он же подсказывает первую интерпретацию, знакомые варианты и уверенный прогноз. Руководитель работает с собранной им моделью ситуации и принимает её за саму ситуацию.</p>
+        <p class="body">Знать о типичных ошибках мышления недостаточно: люди хорошо замечают их у других и плохо у себя. Ошибки снижает процедура, встроенная в подготовку решения.</p>
+      </div>
+    </div>
+
+      </div>
+</section>
+
+<!-- 4. ЧТО ТАКОЕ МЫСЛЕПРАКТИКА -->
+<section class="section section--subtle" id="practices">
+  <div class="container">
+    <div class="bridge">
+      <ol class="flow" data-anim aria-label="Логика перехода к мыслепрактикам">
+        <li style="--i:0"><span>у руководителя сильные способы мышления</span></li>
+        <li style="--i:1"><span>в крупной задаче они включаются автоматически</span></li>
+        <li style="--i:2"><span>знание об ошибках от них не защищает</span></li>
+        <li style="--i:3"><span>нужна процедура в регулярной работе</span></li>
+        <li style="--i:4" class="is-key"><span>мыслепрактика</span></li>
+      </ol>
+    </div>
+
+    <div class="define">
+      <h2 class="h1">Мыслепрактика — <em>регулярный менеджмент</em> для мышления</h2>
+      <div>
+        <p class="define__def"><strong>Заданная последовательность из 3–7 шагов, через которую руководитель проводит своё реальное решение.</strong> Шаги заставляют увидеть варианты, сверить прогноз с фактами, назвать риски и остановить лишнее. На выходе — рабочий документ.</p>
+        <ul class="attrs">
+          <li><span class="num">01</span><span>Материал — собственное решение участника на ближайшие 3–6 месяцев</span></li>
+          <li><span class="num">02</span><span>Осваивается за один модуль, дальше применяется командой без ведущего</span></li>
+          <li><span class="num">03</span><span>Результат виден в документах и протоколах правления</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="acts" data-anim>
+      <div class="act" style="--i:0"><div class="act__verb">Увидеть</div><div class="act__line"><span class="act__dot"></span></div><p>Вынести ход собственного рассуждения наружу: элементы, связи, предположения, логику вывода.</p></div>
+      <div class="act" style="--i:1"><div class="act__verb">Проверить</div><div class="act__line"></div><p>Отделить факты от интерпретаций, сверить прогноз с похожими случаями, назвать риски.</p></div>
+      <div class="act" style="--i:2"><div class="act__verb">Пересобрать</div><div class="act__line"></div><p>Посмотреть на задачу из другой рамки и построить решение, которого не было в первом наборе вариантов.</p></div>
+      <div class="reflex" style="grid-column:1/-1">
+        <p class="reflex__label">Рефлексия<small>проходит через каждую практику</small></p>
+        <ul class="reflex__qs">
+          <li>Как я пришёл к этому выводу?</li>
+          <li>Что определило мой способ видеть задачу?</li>
+          <li>Что изменится, если подойти к ней иначе?</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="synth">
+      <div>
+        <h4>Что даёт процедура</h4>
+        <p>Решение, проверенное на варианты, прогноз и риски, и документ, который идёт на правление.</p>
+      </div>
+      <div>
+        <h4>Что остаётся после программы</h4>
+        <p>Руководитель сравнивает свой привычный ход с новым на одной и той же задаче и начинает замечать, каким способом думает, — и выбирать другой, когда этого требует ситуация.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 5. БИБЛИОТЕКА -->
+<section class="section" id="library">
+  <div class="container">
+    <p class="caption">Библиотека практик</p>
+    <h2 class="h1 tasks__h">Шесть задач <em>первого лица</em></h2>
+    <p class="day__hint">Нажмите на практику, чтобы увидеть, как она работает и что даёт</p>
+    <div class="tasks__grid" data-anim>
+      <div class="tasks__cols" aria-hidden="true"><span>Задача руководителя</span><span>Что на выходе</span><span>Мыслепрактики</span></div>
+      <div class="task" style="--i:0"><span class="task__type"><span class="num">01</span><span>Понять ситуацию до решения<span class="task__mod">Модуль 1</span></span></span><span class="task__do">Карта ситуации и ключевое ограничение системы</span><span class="task__tools"><button type="button" class="pchip" data-p="mindmap">Ментальная карта</button><button type="button" class="pchip" data-p="ishikawa">Диаграмма Исикавы</button><button type="button" class="pchip" data-p="toc">Теория ограничений</button><button type="button" class="pchip" data-p="loops">Системные петли</button></span></div>
+      <div class="task" style="--i:1"><span class="task__type"><span class="num">02</span><span>Найти варианты<span class="task__mod">Модуль 2</span></span></span><span class="task__do">3–4 варианта, включая вариант, снимающий противоречие</span><span class="task__tools"><button type="button" class="pchip" data-p="options">Поле вариантов</button><button type="button" class="pchip" data-p="triz">ТРИЗ: противоречие</button><button type="button" class="pchip" data-p="empathy">Карта эмпатии</button><button type="button" class="pchip" data-p="synectics">Синектика</button></span></div>
+      <div class="task" style="--i:2"><span class="task__type"><span class="num">03</span><span>Выбрать сильное решение<span class="task__mod">Модуль 3</span></span></span><span class="task__do">Прогноз с поправкой по аналогам и обоснованный выбор</span><span class="task__tools"><button type="button" class="pchip" data-p="outside">Взгляд извне</button><button type="button" class="pchip" data-p="independent">Независимые оценки</button><button type="button" class="pchip" data-p="scenarios">Сценарии</button><button type="button" class="pchip" data-p="tradeoff">Шкала компромиссов</button></span></div>
+      <div class="task" style="--i:3"><span class="task__type"><span class="num">04</span><span>Проверить до запуска<span class="task__mod">Модуль 3</span></span></span><span class="task__do">3–5 главных рисков с мерами, владельцами и ранними сигналами</span><span class="task__tools"><button type="button" class="pchip" data-p="premortem">Премортем</button><button type="button" class="pchip" data-p="response">Ответный ход</button><button type="button" class="pchip" data-p="second">Последствия второго порядка</button><button type="button" class="pchip" data-p="medals">Шесть медалей ценности</button><button type="button" class="pchip" data-p="ai">Проверка ответа ИИ</button></span></div>
+      <div class="task" style="--i:4"><span class="task__type"><span class="num">05</span><span>Провести решение и высвободить ресурсы<span class="task__mod">Модуль 4</span></span></span><span class="task__do">Лист для правления и реестр остановок в рублях и часах</span><span class="task__tools"><button type="button" class="pchip" data-p="onepage">Решение на одном листе</button><button type="button" class="pchip" data-p="stop">Что перестать делать</button><button type="button" class="pchip" data-p="killcrit">Критерии остановки</button></span></div>
+      <div class="task" style="--i:5"><span class="task__type"><span class="num">06</span><span>Учиться на решениях<span class="task__mod">Модуль 4 и 90 дней</span></span></span><span class="task__do">Ожидания против факта и правила на будущее</span><span class="task__tools"><button type="button" class="pchip" data-p="aar">Разбор после действия</button><button type="button" class="pchip" data-p="journal">Журнал решений</button></span></div>
+    </div>
+    <p class="tasks__note">Когнитивные искажения и логические ловушки не выделены в отдельный блок: каждая практика компенсирует конкретную ошибку, и разбор ошибок идёт на материале решения участника.</p>
+  </div>
+</section>
+
+<!-- 6. МОДУЛИ -->
+<section class="section section--subtle" id="modules">
+  <div class="container">
+    <p class="caption">Программа</p>
+    <h2 class="h1 tasks__h">Четыре модуля — полный цикл <em>решения</em></h2>
+    <div class="mods">
+      <article class="mod">
+        <span class="num">01</span>
+        <span class="mod__meta">4 часа · задача 01</span>
+        <h3>Понять ситуацию</h3>
+        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="mindmap">Ментальная карта</button><button type="button" class="pchip pchip--mod" data-p="ishikawa">Диаграмма Исикавы</button><button type="button" class="pchip pchip--mod" data-p="toc">Теория ограничений</button></div>
+        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="loops">системные петли</button></p>
+        <div class="mod__art"><small>Документ на выходе</small><p>Карта ситуации с ключевым ограничением</p></div>
+      </article>
+      <article class="mod">
+        <span class="num">02</span>
+        <span class="mod__meta">4 часа · задача 02</span>
+        <h3>Найти варианты</h3>
+        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="options">Поле вариантов</button><button type="button" class="pchip pchip--mod" data-p="triz">ТРИЗ: работа с противоречием</button></div>
+        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="empathy">карта эмпатии</button>, <button type="button" class="plink" data-p="synectics">синектика</button></p>
+        <div class="mod__art"><small>Документ на выходе</small><p>Поле из 3–4 вариантов вместо «да / нет»</p></div>
+      </article>
+      <article class="mod">
+        <span class="num">03</span>
+        <span class="mod__meta">4 часа · задачи 03–04</span>
+        <h3>Выбрать и проверить</h3>
+        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="outside">Взгляд извне</button><button type="button" class="pchip pchip--mod" data-p="premortem">Премортем</button></div>
+        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="independent">независимые оценки</button>, <button type="button" class="plink" data-p="response">ответный ход</button>, <button type="button" class="plink" data-p="medals">шесть медалей ценности</button></p>
+        <div class="mod__art"><small>Документ на выходе</small><p>Прогноз по аналогам и реестр рисков с владельцами</p></div>
+      </article>
+      <article class="mod">
+        <span class="num">04</span>
+        <span class="mod__meta">4 часа · задачи 05–06</span>
+        <h3>Провести и остановить</h3>
+        <div class="mod__core"><button type="button" class="pchip pchip--mod" data-p="onepage">Решение на одном листе</button><button type="button" class="pchip pchip--mod" data-p="stop">Что перестать делать</button></div>
+        <p class="mod__add">Дополнительно: <button type="button" class="plink" data-p="killcrit">критерии остановки</button>, <button type="button" class="plink" data-p="aar">разбор после действия</button></p>
+        <div class="mod__art"><small>Документ на выходе</small><p>Лист для правления и реестр остановок</p></div>
+      </article>
+    </div>
+    <div class="mods__foot">
+      <div class="stats">
+        <div><div class="stats__v">4</div><div class="stats__l">модуля</div></div>
+        <div><div class="stats__v">16</div><div class="stats__l">часов</div></div>
+        <div><div class="stats__v">90</div><div class="stats__l">дней применения</div></div>
+      </div>
+      <p>Модули проводятся подряд за два дня или раздельно, по одному в неделю. Очно, группа 8–16 человек, два ведущих. Модули можно брать под свой тип задачи, но полный цикл даёт регламент решений целиком.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 7. КАК ПРОХОДИТ МОДУЛЬ -->
+<section class="section" id="day">
+  <div class="container">
+    <div class="day__top">
+      <p class="caption">Структура модуля на 4 часа</p>
+      <h2 class="h1">Одна задача — два способа — <em>сравнение</em></h2>
+      <p class="body" style="margin-top:var(--s3)">Участник проводит своё решение через две практики и видит, как смена способа работы меняет саму картину ситуации и доступные варианты.</p>
+    </div>
+    <ol class="flow flow--sm day__logic" data-anim aria-label="Логика модуля">
+      <li style="--i:0"><span>взять своё решение</span></li>
+      <li style="--i:1" class="is-mark"><span>разобрать привычным ходом</span></li>
+      <li style="--i:2"><span>заметить, как думал</span></li>
+      <li style="--i:3"><span>практика 1</span></li>
+      <li style="--i:4" class="is-mark"><span>пересобрать решение</span></li>
+      <li style="--i:5"><span>практика 2</span></li>
+      <li style="--i:6" class="is-mark"><span>пересобрать ещё раз</span></li>
+      <li style="--i:7"><span>сравнить способы</span></li>
+      <li style="--i:8" class="is-key"><span>документ для правления</span></li>
+    </ol>
+    <p class="day__hint">Выберите этап, чтобы увидеть, что на нём происходит</p>
+    <div class="tl" id="tl" role="tablist" aria-label="Этапы модуля"></div>
+    <div class="panel" id="panel" role="tabpanel" aria-live="polite">
+      <div class="panel__head">
+        <p class="panel__time" id="pTime"></p>
+        <h3 class="panel__title" id="pTitle"></h3>
+        <div class="panel__nav">
+          <button type="button" id="pPrev">Назад</button>
+          <button type="button" id="pNext">Далее</button>
+        </div>
+      </div>
+      <div class="panel__body" id="pBody"></div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. ПРИМЕРЫ -->
+<section class="section section--subtle" id="examples">
+  <div class="container">
+    <p class="caption">Как выглядит мыслепрактика</p>
+    <h2 class="h1 tasks__h">Две практики <em>изнутри</em></h2>
+    <div class="ex">
+      <div class="mp">
+        <span class="mp__tag">Модуль 3 · Проверить до запуска</span>
+        <h3>Премортем</h3>
+        <p>Перед запуском крупного проекта, реорганизации, интеграции после сделки — особенно когда команда единодушна и уверена в плане.</p>
+        <ol class="steps3">
+          <li><span class="num">01</span><b>Объявить провал</b><span>План описан в 3–5 строках. Ведущий объявляет: «Прошло полтора года. Проект провалился — громко».</span></li>
+          <li><span class="num">02</span><b>Назвать причины</b><span>Каждый 3–5 минут молча пишет причины, затем по кругу — по одной, без обсуждения. Усиление: «Как конкурент сорвал бы наш план?»</span></li>
+          <li><span class="num">03</span><b>Усилить план</b><span>3–5 главных причин. Для каждой — мера в плане, владелец и ранний сигнал.</span></li>
+        </ol>
+        <div class="fit">
+          <p class="fit__pain"><small>Когда особенно полезно</small>Когда все согласны и обсуждать вроде бы нечего</p>
+          <p class="fit__insight">«Риск, который я видел, но не называл, теперь записан в плане, и у него есть владелец».</p>
+        </div>
+        <p class="ev">Приём «представить, что исход уже случился» на 30% точнее выявляет причины будущего результата (Mitchell, Russo, Pennington, 1989; Klein, HBR, 2007).</p>
+      </div>
+
+      <div class="mp">
+        <span class="mp__tag">Модуль 2 · Найти варианты</span>
+        <h3>Работа с противоречием по ТРИЗ</h3>
+        <p>Когда важные требования конфликтуют и кажется, что остаётся только компромисс: скорость и качество, автономия и контроль, результат сегодня и развитие системы.</p>
+        <div class="contra">
+          <div class="contra__from"><small>было</small><s>«Выбираем А или Б»</s></div>
+          <span class="contra__arrow" aria-hidden="true"></span>
+          <div class="contra__to"><small>стало</small>«Какое требование усиливаем и что при этом ухудшается?»</div>
+        </div>
+        <div class="sub">
+          <h4>Идеальный конечный результат</h4>
+          <p>Как выглядел бы результат, если бы противоречие было снято? Описывается без привязки к привычному решению.</p>
+        </div>
+        <div class="sub">
+          <h4>Ресурсы, которые уже есть в системе</h4>
+          <div class="chip-row"><span class="chip">люди</span><span class="chip">процессы</span><span class="chip">информация</span><span class="chip">время</span><span class="chip">связи</span><span class="chip">последовательность действий</span></div>
+        </div>
+        <div class="fit">
+          <p class="fit__pain"><small>Когда особенно полезно</small>Когда выбор выглядит вынужденным</p>
+          <p class="fit__insight">«Ощущение вынужденного компромисса — повод изменить конструкцию задачи».</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. ОСНОВА -->
+<section class="section" id="theory">
+  <div class="container">
+    <p class="caption">На чём основан подход</p>
+    <h2 class="h1 tasks__h">Две линии <em>исследований</em></h2>
+    <div class="th">
+      <div class="card">
+        <p class="card__who">Качество управленческих решений</p>
+        <h3 class="h3">Процедура снижает ошибки сильнее, чем знание о них</h3>
+        <ul class="th__list">
+          <li><b>Д. Ловалло, О. Сибони</b><span>Процесс подготовки решения объясняет результат сильнее анализа</span><small class="th__src">«The case for behavioral strategy», McKinsey Quarterly, 2010</small></li>
+          <li><b>Д. Канеман, Д. Ловалло</b><span>Взгляд извне: прогноз по классу похожих проектов вместо собственного плана</span><small class="th__src">«Timid choices and bold forecasts», Management Science, 1993; «Delusions of success», HBR, 2003</small></li>
+          <li><b>Г. Клейн</b><span>Премортем как способ вывести невысказанные риски</span><small class="th__src">«Performing a project premortem», HBR, 2007</small></li>
+          <li><b>Д. Канеман, О. Сибони, К. Санстейн</b><span>Разнобой суждений и независимые оценки</span><small class="th__src">«Шум. Несовершенство человеческих суждений», 2021</small></li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="card__who">Развитие мышления взрослых</p>
+        <h3 class="h3">Собственный способ мышления можно сделать предметом работы</h3>
+        <ul class="th__list">
+          <li><b>Р. Киган</b><span>Переход от «я вижу ситуацию так» к «я понимаю, почему вижу её так»</span><small class="th__src">«In Over Our Heads: The Mental Demands of Modern Life», 1994</small></li>
+          <li><b>К. Арджирис, Д. Шён</b><span>Двухконтурное обучение: проверяются не только действия, но и предположения, из которых они выросли</span><small class="th__src">«Organizational Learning: A Theory of Action Perspective», 1978</small></li>
+          <li><b>Дж. Флейвелл</b><span>Метакогниция: замечать, отслеживать и менять собственный ход рассуждения</span><small class="th__src">«Metacognition and cognitive monitoring», American Psychologist, 1979</small></li>
+          <li><b>Р. Марцано, Дж. Кендалл</b><span>Таксономия целей, на которой построена логика каждого модуля</span><small class="th__src">«The New Taxonomy of Educational Objectives», 2007</small></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="container foot__in">
+    <a href="https://bitobe.ru/" target="_blank" rel="noopener" class="logo-link" aria-label="BITOBE — на главную">
+      <svg class="logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512.18 105.41" aria-hidden="true">
+      <path fill="#182D8D" d="M42.84,104.23H0V1.18H43.72c5.1,0,9.62,.37,13.54,1.1,3.92,.74,7.68,2.01,11.26,3.83,3.58,1.82,6.33,4.49,8.24,8.02,1.91,3.53,2.87,7.85,2.87,12.96,0,10.21-4.12,17.86-12.37,22.97,10.6,3.44,15.9,11.48,15.9,24.14,0,5.69-1.15,10.58-3.46,14.65-2.31,4.07-5.45,7.19-9.42,9.35-3.98,2.16-8.22,3.71-12.74,4.64-4.51,.93-9.42,1.4-14.72,1.4Zm-1.47-86.27H17.81v25.62h25.47c4.81,0,9-.98,12.59-2.94,3.58-1.96,5.38-5.15,5.38-9.57,0-2.85-.54-5.2-1.62-7.07-1.08-1.86-2.68-3.19-4.79-3.98-2.11-.78-4.17-1.32-6.18-1.62-2.01-.29-4.44-.44-7.29-.44Zm1.47,41.81H17.81v27.68h23.85c3.14,0,5.84-.15,8.1-.44,2.26-.29,4.64-.88,7.14-1.77,2.5-.88,4.41-2.33,5.74-4.34,1.33-2.01,1.99-4.59,1.99-7.73,0-3.83-1.25-6.8-3.75-8.91-2.5-2.11-5.15-3.39-7.95-3.83-2.8-.44-6.16-.66-10.08-.66Z"/>
+      <path fill="#182D8D" d="M117.19,104.23h-17.81V1.18h17.81V104.23Z"/>
+      <path fill="#182D8D" d="M162.23,17.96h-34.6V1.18h87.01V17.96h-34.6V104.23h-17.81V17.96Z"/>
+      <path fill="#182D8D" d="M229.37,90.1c-10.11-10.21-15.16-22.67-15.16-37.39s5.13-27.19,15.38-37.39c10.26-10.21,22.7-15.31,37.32-15.31s27.68,5.06,37.69,15.16c10.01,10.11,15.02,22.62,15.02,37.54s-5.08,27.43-15.24,37.54c-10.16,10.11-22.65,15.16-37.47,15.16s-27.43-5.1-37.54-15.31Zm13.03-62.57c-6.43,6.97-9.64,15.36-9.64,25.17s3.29,18.21,9.86,25.17c6.58,6.97,14.67,10.45,24.29,10.45,10.11,0,18.33-3.41,24.66-10.23,6.33-6.82,9.49-15.29,9.49-25.4s-3.26-18.33-9.79-25.25c-6.53-6.92-14.65-10.38-24.37-10.38s-18.09,3.48-24.51,10.45Z"/>
+      <path fill="#182D8D" d="M377.62,104.23h-42.84V1.18h43.72c5.1,0,9.62,.37,13.54,1.1,3.92,.74,7.68,2.01,11.26,3.83,3.58,1.82,6.33,4.49,8.24,8.02,1.91,3.53,2.87,7.85,2.87,12.96,0,10.21-4.12,17.86-12.37,22.97,10.6,3.44,15.9,11.48,15.9,24.14,0,5.69-1.15,10.58-3.46,14.65-2.31,4.07-5.45,7.19-9.42,9.35-3.98,2.16-8.22,3.71-12.74,4.64-4.51,.93-9.42,1.4-14.72,1.4Zm-1.47-86.27h-23.55v25.62h25.47c4.81,0,9-.98,12.59-2.94,3.58-1.96,5.38-5.15,5.38-9.57,0-2.85-.54-5.2-1.62-7.07-1.08-1.86-2.68-3.19-4.79-3.98-2.11-.78-4.17-1.32-6.18-1.62-2.01-.29-4.44-.44-7.29-.44Zm1.47,41.81h-25.03v27.68h23.85c3.14,0,5.84-.15,8.1-.44,2.26-.29,4.64-.88,7.14-1.77,2.5-.88,4.41-2.33,5.74-4.34,1.33-2.01,1.99-4.59,1.99-7.73,0-3.83-1.25-6.8-3.75-8.91-2.5-2.11-5.15-3.39-7.95-3.83-2.8-.44-6.16-.66-10.08-.66Z"/>
+      <path fill="#182D8D" d="M512.18,104.23h-78.03V1.18h76.56V17.96h-58.74v25.91h54.91v16.19h-54.91v27.38h60.21v16.78Z"/>
+    </svg>
+    </a>
+    <p class="foot__copy">© BITOBE, 2026 · ООО «Бизнес для Бизнеса»</p>
+  </div>
+</footer>
+
+<dialog class="pd" id="pd" aria-labelledby="pdTitle">
+  <div class="pd__in">
+    <button type="button" class="pd__x" id="pdX" aria-label="Закрыть"></button>
+    <p class="pd__cap">Мыслепрактика</p>
+    <h3 class="pd__title" id="pdTitle"></h3>
+    <dl class="pd__list">
+      <div><dt>Когда применять</dt><dd id="pdWhen"></dd></div>
+      <div><dt>Как работает</dt><dd id="pdHow"></dd></div>
+      <div><dt>Что на выходе</dt><dd id="pdOut"></dd></div>
+    </dl>
+    <p class="pd__eff"><small>Что это даёт бизнесу</small><span id="pdEff"></span></p>
+  </div>
+</dialog>
+
+
+<script>
+(function(){
+
+  // Появление схем
+  var els = document.querySelectorAll('[data-anim]');
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (!('IntersectionObserver' in window) || reduce) {
+    els.forEach(function(e){ e.classList.add('in'); });
+  } else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {threshold:.25, rootMargin:'0px 0px -8% 0px'});
+    els.forEach(function(e){ io.observe(e); });
+  }
+
+  // Временная линия практикума
+  var S = [{"t": "0:00", "m": 15, "n": "Своё решение", "p": ["Каждый участник формулирует решение, над которым работает сейчас: что решается, к какому сроку, кто принимает решение.", "Задача фиксируется так, чтобы её можно было вынести на правление."]}, {"t": "0:15", "m": 20, "n": "Привычный ход", "p": ["Участник готовит решение так, как сделал бы это на работе, без подсказок и инструментов.", "Результат записывается: <b>к нему вернутся в конце модуля</b>."]}, {"t": "0:35", "m": 15, "n": "Разбор мышления", "p": ["Группа обсуждает не само решение, а <b>то, как оно появилось</b>:"], "q": ["Что мы посчитали очевидным?", "Какие предположения повлияли на вывод?", "Почему участники увидели похожие ситуации по-разному?"], "a": "Задача — сделать различия в мышлении видимыми до знакомства с инструментом."}, {"t": "0:50", "m": 30, "n": "Практика 1", "mp": 1, "p": ["Короткое введение: шаги практики и то, какую ошибку она компенсирует.", "Демонстрация на решении одного из участников."]}, {"t": "1:20", "m": 35, "n": "Своё решение через практику 1", "p": ["Участники проводят своё решение через шаги практики: индивидуально, затем в парах.", "В обсуждении объясняют не только <b>что решили</b>, но и:"], "q": ["что заметили;", "что изменилось по сравнению с первым вариантом."]}, {"t": "", "m": 15, "n": "Перерыв", "br": 1, "p": ["Пауза между блоками модуля."]}, {"t": "2:10", "m": 30, "n": "Практика 2", "mp": 1, "p": ["Второй способ работы вводится через ограничение первого решения или новый поворот той же задачи."]}, {"t": "2:40", "m": 35, "n": "Своё решение через практику 2", "p": ["Участники снова пересобирают решение, теперь вторым способом.", "Предмет обсуждения:"], "q": ["как изменился способ видеть задачу;", "какие варианты и риски появились;", "что стало важным после второй практики."]}, {"t": "3:15", "m": 25, "n": "Сравнение способов", "p": ["Участник кладёт рядом три версии решения: привычную и две новые.", "Сравниваются не только результаты, но и <b>логика рассуждения</b>:"], "q": ["Что осталось прежним?", "За счёт какого хода появилось другое решение?", "Для каких задач полезен каждый способ?"]}, {"t": "3:40", "m": 20, "n": "Документ и перенос", "p": ["Участник оформляет документ модуля по своей задаче и назначает дату, когда применит практику на ближайшем заседании."], "q": ["Какой способ я включил автоматически?", "По каким признакам я пойму, что нужен другой?"]}];
+  var tl = document.getElementById('tl'), panel = document.getElementById('panel');
+  var pTime = document.getElementById('pTime'), pTitle = document.getElementById('pTitle'), pBody = document.getElementById('pBody');
+  var prev = document.getElementById('pPrev'), next = document.getElementById('pNext');
+  var mq = window.matchMedia('(max-width:700px)');
+  var cur = 0, btns = [];
+  S.forEach(function(s, i){
+    var b = document.createElement('button');
+    b.type = 'button'; b.className = 'tl__seg' + (s.br ? ' is-break' : '') + (s.mp ? ' is-mp' : '');
+    b.setAttribute('role','tab'); b.id = 'tab'+i; b.setAttribute('aria-controls','panel');
+    b.style.setProperty('--g', s.m + 20); b.style.setProperty('--m', s.m);
+    b.innerHTML = '<span class="tl__bar"></span><span class="tl__txt"><span class="tl__time">'+s.t+'</span><span class="tl__name">'+s.n+'</span></span>';
+    b.addEventListener('click', function(){ show(i, true); });
+    b.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown'){ e.preventDefault(); show(Math.min(S.length-1, cur+1), true, true); }
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowUp'){ e.preventDefault(); show(Math.max(0, cur-1), true, true); }
+    });
+    tl.appendChild(b); btns.push(b);
+  });
+  function place(){
+    if (mq.matches){ btns[cur].after(panel); } else { tl.after(panel); }
+  }
+  function show(i, anim, focus){
+    cur = i; var s = S[i];
+    btns.forEach(function(b, j){ b.setAttribute('aria-selected', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
+    panel.setAttribute('aria-labelledby', 'tab'+i);
+    pTime.textContent = s.t; pTime.hidden = !s.t; pTitle.textContent = s.n;
+    var h = s.p.map(function(x){ return '<p>'+x+'</p>'; }).join('');
+    if (s.q) h += '<ul>' + s.q.map(function(x){ return '<li>'+x+'</li>'; }).join('') + '</ul>';
+    if (s.a) h += '<p class="after">'+s.a+'</p>';
+    pBody.innerHTML = h;
+    prev.disabled = i === 0; next.disabled = i === S.length - 1;
+    place();
+    if (anim){ panel.classList.remove('is-swap'); void panel.offsetWidth; panel.classList.add('is-swap'); }
+    if (focus) btns[i].focus();
+  }
+  prev.addEventListener('click', function(){ if (cur > 0) show(cur-1, true); });
+  next.addEventListener('click', function(){ if (cur < S.length-1) show(cur+1, true); });
+  if (mq.addEventListener) mq.addEventListener('change', place); else if (mq.addListener) mq.addListener(place);
+  show(0, false);
+})();
+</script>
+
+<script>
+(function(){
+  var D={"mindmap": ["Ментальная карта", "Ситуация многофакторная, и у каждого члена правления своя картина происходящего.", "В центре — задача, от неё ветви: факторы, участники, ограничения, связи. Каждый строит свою карту, затем карты кладут рядом и сравнивают.", "Общая картина ситуации и список факторов, которые не попали ни в одну карту.", "Правление обсуждает одну общую картину ситуации, согласованную заранее."], "ishikawa": ["Диаграмма Исикавы", "Проблема повторяется, хотя «очевидную» причину уже устраняли.", "Проблема записывается в «голову рыбы», возможные причины раскладываются по группам: люди, процессы, технологии, информация, правила, внешняя среда. Каждая гипотеза проверяется фактами.", "Карта проверенных причин вместо одной привычной версии.", "Бюджет уходит на устранение причины. Симптом перестаёт возвращаться."], "toc": ["Теория ограничений", "Проблем много, и каждая выглядит приоритетной.", "Фиксируется цель системы и ищется одно звено, которое сейчас ограничивает её результат (Э. Голдратт). Сначала из него выжимают максимум без вложений, остальное подстраивают под него, и только потом расширяют.", "Одна точка приложения усилий и перечень инициатив, которые можно отложить.", "Инвестиции идут туда, где растёт результат всей системы."], "loops": ["Системные петли", "Меры дают эффект, который через полгода исчезает или начинает работать против.", "Связи между факторами рисуются как замкнутые контуры — усиливающие и уравновешивающие, с учётом задержек.", "Схема, на которой видно, почему прошлые меры не сработали и где находится рычаг.", "Меньше решений, которые улучшают квартал ценой следующего года."], "options": ["Поле вариантов", "Вопрос на правлении звучит как «да или нет».", "К исходной идее обязательно добавляются минимум две альтернативы: «сделать обе вещи», «сделать частично», а также вариант, который появился бы, если бы исходный стал невозможен.", "3–4 варианта и критерии, по которым их сравнивают.", "По данным П. Натта, решения «да / нет» проваливаются в 52% случаев, решения из нескольких вариантов — в 32%."], "triz": ["ТРИЗ: работа с противоречием", "Требования конфликтуют — скорость и качество, контроль и автономия, — и обсуждение ходит по кругу.", "Формулируется, какой параметр усиливаем и что при этом ухудшается. Описывается идеальный конечный результат. Затем ищутся ресурсы, которые уже есть в системе и позволяют снять конфликт.", "Вариант решения, сохраняющий оба требования.", "Компромисс, в котором проигрывают обе цели, заменяется решением без вынужденных потерь."], "empathy": ["Карта эмпатии", "Решение затрагивает функции или партнёров, которые видят ситуацию иначе и могут сопротивляться.", "Для каждой ключевой стороны заполняется: что она видит, слышит, думает, говорит, чего опасается и к чему стремится. Гипотезы по возможности проверяются разговором.", "Карта позиций сторон и список их обоснованных опасений.", "Сопротивление при внедрении снимается до запуска: опасения учтены в самом решении."], "synectics": ["Синектика", "Все варианты на столе взяты из своей отрасли и прошлого опыта.", "Задача переносится в другую область через аналогии: где ещё решают похожую задачу, как это устроено в логистике, медицине, природе. Найденный принцип возвращается в исходную ситуацию.", "2–3 варианта, которых не было в первом наборе.", "Решения выходят за пределы того, что уже пробовали конкуренты."], "outside": ["Взгляд извне", "Утверждается бюджет, срок или ожидаемый эффект крупного проекта.", "Подбирается класс похожих проектов — своих и чужих. Смотрят, насколько их факт отклонился от плана, и на эту величину корректируют прогноз команды (Д. Канеман, Д. Ловалло).", "Прогноз с поправкой по аналогам и резерв, заложенный до старта.", "Меньше пересмотров бюджета и сдвигов сроков по ходу проекта."], "independent": ["Независимые оценки", "Решение принимает группа, и первым высказывается старший по должности.", "Каждый письменно и до обсуждения ставит оценку по заранее заданным критериям. Оценки сводятся в таблицу, обсуждаются только расхождения.", "Таблица оценок с видимым разбросом мнений.", "Решение отражает знание всей команды. Большой разброс сам показывает, где не хватает данных."], "scenarios": ["Сценарии", "Результат зависит от факторов, которые компания не контролирует: курс, регулирование, спрос.", "Выбираются две ключевые неопределённости, на их пересечении строятся 3–4 правдоподобных сценария. Решение проверяется на каждом.", "Решение, которое выдерживает несколько сценариев, и сигналы, по которым видно, какой из них наступает.", "Компания готова к повороту заранее."], "tradeoff": ["Шкала компромиссов", "Варианты сильны в разном, и спор идёт о вкусах.", "До сравнения фиксируются 4–6 критериев и их веса. Каждый вариант оценивается по шкале, и для каждого прямо называется, чем мы жертвуем, выбирая его.", "Обоснованный выбор с явной ценой.", "Решение легко защитить перед советом директоров и объяснить команде."], "premortem": ["Премортем", "Перед запуском проекта, реорганизации, интеграции — особенно когда команда единодушна.", "Ведущий объявляет: «Прошло полтора года, проект провалился». Каждый молча пишет причины, затем их называют по кругу, без обсуждения. Для 3–5 главных назначаются мера, владелец и ранний сигнал.", "Реестр главных рисков с владельцами и ранними сигналами.", "Риски, которые команда видела, но не называла, попадают в план до старта (Г. Клейн)."], "response": ["Ответный ход", "Решение меняет положение на рынке: цена, выход в регион, новый продукт.", "Участники играют за конкурента, ключевого клиента или регулятора: что они сделают в ответ на наш шаг и чем ответим мы.", "2–3 вероятных ответа рынка и заготовленная реакция на каждый.", "План учитывает действия других игроков. Их ход не застаёт компанию врасплох."], "second": ["Последствия второго порядка", "Решение даёт быстрый очевидный эффект: сокращение, смена системы мотивации, централизация.", "К каждому прямому эффекту дважды задаётся вопрос «и что потом?» — по людям, клиентам, смежным процессам.", "Цепочка последствий на горизонте 6–18 месяцев.", "Меньше решений, которые экономят в этом году и обходятся дороже в следующем."], "medals": ["Шесть медалей ценности", "Решение выбрано, но оценивается по одному критерию — чаще всего по деньгам.", "Решение проверяется по шести типам ценности (Э. де Боно): для людей, для целей организации, качество, новизна и простота, влияние на окружение, восприятие.", "Карта, где видно, в чём решение сильно и где требует доработки.", "Побочные потери — репутация, лояльность команды, отношения с партнёрами — видны до запуска."], "ai": ["Проверка ответа ИИ", "В подготовке решения использовались выводы или расчёты нейросети.", "Проверяются источники и цифры, выводы сверяются с данными компании. Затем модель просят аргументировать противоположную позицию и сравнивают аргументы.", "Вывод, очищенный от правдоподобных, но неверных утверждений.", "Решение не опирается на непроверенную ошибку, которая выглядела убедительно."], "onepage": ["Решение на одном листе", "Вопрос выносится на правление.", "На одной странице: что решаем, какие варианты рассматривали, что выбрали и почему, прогноз с поправкой, главные риски с владельцами, условия пересмотра.", "Документ для правления.", "Обсуждение короче, возвратов на доработку меньше."], "stop": ["Что перестать делать", "Новые приоритеты добавляются, старые не снимаются.", "Инвентаризация проектов, отчётов, совещаний и процессов. По каждому — вопрос «начали бы мы это сегодня?». Для кандидатов на остановку считается высвобождаемый ресурс.", "Реестр остановок с суммой в рублях и часах.", "Ресурс под новое решение находится внутри компании."], "killcrit": ["Критерии остановки", "Запускается проект с неопределённым результатом.", "До старта фиксируются показатели и даты, при которых проект пересматривается или закрывается, и кто принимает это решение.", "Согласованные условия пересмотра проекта.", "Проигрышные проекты закрываются раньше, без спора об уже вложенных деньгах."], "aar": ["Разбор после действия", "Решение исполнено или пройден ключевой этап.", "Четыре вопроса: что ожидали, что получили, почему разошлось, что делаем иначе. Ответы сверяются с прогнозом, записанным в момент решения.", "Правила для следующих решений.", "Команда накапливает опыт на собственных решениях, и ошибки не повторяются."], "journal": ["Журнал решений", "Регулярно, по каждому крупному решению.", "В момент решения записывается: что знали, чего ожидали, с какой уверенностью, какие варианты отвергли и почему.", "Запись, с которой потом сверяется фактический результат.", "Защищает от «знания задним числом» и показывает, в какую сторону систематически смещены прогнозы команды."]};
+  var d=document.getElementById('pd');
+  function open(id){var x=D[id];if(!x)return;
+    document.getElementById('pdTitle').textContent=x[0];
+    document.getElementById('pdWhen').textContent=x[1];
+    document.getElementById('pdHow').textContent=x[2];
+    document.getElementById('pdOut').textContent=x[3];
+    document.getElementById('pdEff').textContent=x[4];
+    if(d.showModal){d.showModal();}else{d.setAttribute('open','');}
+  }
+  function close(){if(d.close)d.close();else d.removeAttribute('open');}
+  document.addEventListener('click',function(e){
+    var b=e.target.closest&&e.target.closest('[data-p]');
+    if(b){e.preventDefault();open(b.getAttribute('data-p'));}
+  });
+  document.getElementById('pdX').addEventListener('click',close);
+  d.addEventListener('click',function(e){if(e.target===d)close();});
+})();
+</script>
+</body>
+</html>
